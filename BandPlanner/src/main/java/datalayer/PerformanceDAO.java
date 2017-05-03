@@ -228,6 +228,7 @@ public class PerformanceDAO implements IPerformanceDAO {
         }
     }
 
+    //Get previous performance by getting the first one where the end time is earlier than the current end time
     @Override
     public Performance getPreviousPerformance(String id) {
         Performance p = null;
@@ -272,6 +273,7 @@ public class PerformanceDAO implements IPerformanceDAO {
         return p;
     }
 
+    //Get the next performance by getting the first one where the start time is larger than the current start time
     @Override
     public Performance getNextPerformance(String id) {
         Performance p = null;
