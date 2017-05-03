@@ -68,7 +68,7 @@ public class ArtistDAO implements IArtistDAO {
                 String artistname = resultSet.getString("a_name");
                 String description = resultSet.getString("description");
 
-                a = new Artist(artistname, description);
+                a = new Artist(artistname, description, id);
             }
         } catch (SQLException ex) {
             Logger.getLogger(MysqlDAO.class.getName()).log(Level.SEVERE, null, ex);
@@ -84,17 +84,16 @@ public class ArtistDAO implements IArtistDAO {
         Connection conn = null;
         try {
             conn = MysqlDAO.getInstance().connect();
-            PreparedStatement statement = conn.prepareStatement("SELECT `artist_id`, `a_name`, `description`"
+            PreparedStatement statement = conn.prepareStatement("SELECT `artist_id`, `description`"
                     + " FROM `artist` WHERE `a_name` = ?");
             statement.setString(1, n);
             ResultSet resultSet = statement.executeQuery();
 
             while (resultSet.next()) {
                 UUID id = UUID.fromString(resultSet.getString("artist_id"));
-                String artistname = resultSet.getString("a_name");
                 String description = resultSet.getString("description");
 
-                a = new Artist(artistname, description, id);
+                a = new Artist(n, description, id);
             }
         } catch (SQLException ex) {
             Logger.getLogger(MysqlDAO.class.getName()).log(Level.SEVERE, null, ex);
