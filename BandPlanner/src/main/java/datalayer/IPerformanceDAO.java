@@ -18,7 +18,9 @@ public interface IPerformanceDAO {
 
     public ArrayList<Performance> getPerformancesByPodium(Podium p);
 
-    public ArrayList<Performance> getPerformancesByDay(Date d); //util date, maybe sql date?
+    public ArrayList<Performance> getPerformancesByDay(Date d);
+    
+    public ArrayList<Performance> getAllPerformances();
 
     public void updatePerformance(Performance p);
 

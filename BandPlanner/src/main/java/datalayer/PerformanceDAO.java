@@ -160,7 +160,6 @@ public class PerformanceDAO implements IPerformanceDAO {
             statement.setDate(1, d);
             ResultSet resultSet = statement.executeQuery();
 
-            //TODO
             while (resultSet.next()) {
                 //Performance values
                 UUID performanceId = UUID.fromString(resultSet.getString("performance_id"));
@@ -314,6 +313,47 @@ public class PerformanceDAO implements IPerformanceDAO {
             Logger.getLogger(MysqlDAO.class.getName()).log(Level.SEVERE, null, ex);
         }
         return p;
+    }
+
+    @Override
+    public ArrayList<Performance> getAllPerformances() {
+        ArrayList<Performance> performances = new ArrayList<>();
+        Connection conn = null;
+        try {
+            conn = MysqlDAO.getInstance().connect();
+            PreparedStatement statement = conn.prepareStatement(""
+                    + "SELECT `performance_id`, `start_time`, `end_time`, `artist`.`a_name`, `podium`.`p_name` FROM `podium` "
+                    + "LEFT JOIN `performance` ON `performance`.`podium`=`podium`.`podium_id` "
+                    + "LEFT JOIN `artist` ON `performance`.`artist`=`artist`.`artist_id`");
+            ResultSet resultSet = statement.executeQuery();
+
+            while (resultSet.next()) {
+                //Performance values
+                UUID performanceId = UUID.fromString(resultSet.getString("performance_id"));
+                Date startdate = resultSet.getDate("startdate");
+                Date enddate = resultSet.getDate("enddate");
+
+                Performance perf = new Performance(performanceId, startdate, enddate);
+
+                //Artist values
+                String artistname = resultSet.getString("a_name");
+                Artist a = new Artist(artistname);
+
+                //Podium values
+                UUID podiumId = UUID.fromString(resultSet.getString("podium_id"));
+                String podiumname = resultSet.getString("p_name");
+                Podium podium = new Podium(podiumname, podiumId);
+
+                perf.setArtist(a);
+                perf.setPodium(podium);
+                performances.add(perf);
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(MysqlDAO.class.getName()).log(Level.SEVERE, null, ex);
+        } finally {
+            MysqlDAO.getInstance().closeConnection(conn);
+        }
+        return performances;
     }
 
 }
