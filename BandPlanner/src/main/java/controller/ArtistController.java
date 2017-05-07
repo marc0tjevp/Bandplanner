@@ -10,5 +10,5 @@ package controller;
  * @author maxim
  */
 public class ArtistController {
-    
+     
 }

@@ -1,17 +1,18 @@
-/home/maxim/bandplanner/BandPlanner/src/main/java/controller/PerformanceController.java
-/home/maxim/bandplanner/BandPlanner/src/main/java/controller/ArtistController.java
-/home/maxim/bandplanner/BandPlanner/src/main/java/datalayer/IPodiumDAO.java
-/home/maxim/bandplanner/BandPlanner/src/main/java/datalayer/ArtistDAO.java
-/home/maxim/bandplanner/BandPlanner/src/main/java/datalayer/IArtistDAO.java
-/home/maxim/bandplanner/BandPlanner/src/main/java/config/WebInitializer.java
-/home/maxim/bandplanner/BandPlanner/src/main/java/model/Podium.java
-/home/maxim/bandplanner/BandPlanner/src/main/java/config/Config.java
-/home/maxim/bandplanner/BandPlanner/src/main/java/datalayer/PerformanceDAO.java
-/home/maxim/bandplanner/BandPlanner/src/main/java/utils/SpringHelper.java
-/home/maxim/bandplanner/BandPlanner/src/main/java/model/Artist.java
-/home/maxim/bandplanner/BandPlanner/src/main/java/datalayer/MysqlDAO.java
-/home/maxim/bandplanner/BandPlanner/src/main/java/model/Performance.java
-/home/maxim/bandplanner/BandPlanner/src/main/java/datalayer/PodiumDAO.java
-/home/maxim/bandplanner/BandPlanner/src/main/java/datalayer/IPerformanceDAO.java
-/home/maxim/bandplanner/BandPlanner/src/main/java/controller/PodiumController.java
-/home/maxim/bandplanner/BandPlanner/src/main/java/Starter.java
+/home/marco/Netbeans Projects/bandplanner/BandPlanner/src/main/java/model/Artist.java
+/home/marco/Netbeans Projects/bandplanner/BandPlanner/src/main/java/controller/PerformanceController.java
+/home/marco/Netbeans Projects/bandplanner/BandPlanner/src/main/java/utils/SpringHelper.java
+/home/marco/Netbeans Projects/bandplanner/BandPlanner/src/main/java/controller/DefaultController.java
+/home/marco/Netbeans Projects/bandplanner/BandPlanner/src/main/java/model/Performance.java
+/home/marco/Netbeans Projects/bandplanner/BandPlanner/src/main/java/datalayer/IPodiumDAO.java
+/home/marco/Netbeans Projects/bandplanner/BandPlanner/src/main/java/datalayer/IPerformanceDAO.java
+/home/marco/Netbeans Projects/bandplanner/BandPlanner/src/main/java/datalayer/PerformanceDAO.java
+/home/marco/Netbeans Projects/bandplanner/BandPlanner/src/main/java/config/Config.java
+/home/marco/Netbeans Projects/bandplanner/BandPlanner/src/main/java/datalayer/ArtistDAO.java
+/home/marco/Netbeans Projects/bandplanner/BandPlanner/src/main/java/controller/ArtistController.java
+/home/marco/Netbeans Projects/bandplanner/BandPlanner/src/main/java/datalayer/IArtistDAO.java
+/home/marco/Netbeans Projects/bandplanner/BandPlanner/src/main/java/datalayer/PodiumDAO.java
+/home/marco/Netbeans Projects/bandplanner/BandPlanner/src/main/java/controller/PodiumController.java
+/home/marco/Netbeans Projects/bandplanner/BandPlanner/src/main/java/datalayer/MysqlDAO.java
+/home/marco/Netbeans Projects/bandplanner/BandPlanner/src/main/java/Starter.java
+/home/marco/Netbeans Projects/bandplanner/BandPlanner/src/main/java/model/Podium.java
+/home/marco/Netbeans Projects/bandplanner/BandPlanner/src/main/java/config/WebInitializer.java
