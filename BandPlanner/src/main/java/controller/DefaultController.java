@@ -19,6 +19,10 @@ public class DefaultController {
 
     @RequestMapping(value = "/", method = RequestMethod.GET)
     public String index(ModelMap map) {
+        
+//        map.put("getAllArtists", );
+//        map.put("getAllStages", );
+//        map.put("getAllPerformances", );
 
         return "index";
     }
