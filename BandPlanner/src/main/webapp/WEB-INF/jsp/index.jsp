@@ -6,6 +6,7 @@
 
 <%@page contentType="text/html;charset=UTF-8" language="java" %>
 <%@page isELIgnored="false" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
 <!DOCTYPE HTML>
 <html lang="en">
@@ -61,46 +62,19 @@
                         <tbody>
                             <c:forEach var="artist" items="${getAllArtists}">
                                 <tr>
-                                    <td>${artist.name}</td>
-                                    <td>${artist.description}</td>
+                                    <td>${artist.getName()}</td>
+                                    <td>${artist.getDescription()}</td>
                                     <td>
                                         <button type="button" class="btn btn-primary">Edit</button>
                                         <button type="button" class="btn btn-danger">Delete</button>
                                     </td>
                                 </tr>
-                            </c:foreach>
+                            </c:forEach>
                         </tbody>
                     </table>
                 </div>
             </div>
-
-            <div class="row">
-                <h4>Stages</h4>
-                <div class="table-responsive">
-                    <table class="table">
-                        <theader>
-                            <tr>
-                                <th>Name</th>
-                                <th>Description</th>
-                                <th>Actions
-                            </tr>
-                        </theader>
-                        <tbody>
-                            <c:forEach var="stage" items="${getAllStages}">
-                                <tr>
-                                    <td>${stage.name}</td>
-                                    <td>${stage.description}</td>
-                                    <td>
-                                        <button type="button" class="btn btn-primary">Edit</button>
-                                        <button type="button" class="btn btn-danger">Delete</button>
-                                    </td>
-                                </tr>
-                            </c:foreach>
-                        </tbody>
-                    </table>
-                </div>
-            </div>
-
+            
             <div class="row">
                 <h4>Performances</h4>
                 <div class="table-responsive">
@@ -114,22 +88,21 @@
                             </tr>
                         </theader>
                         <tbody>
-                            <c:forEach var="performances" items="${getAllPerformances}">
+                            <c:forEach var="performance" items="${getAllPerformances}">
                                 <tr>
-                                    <td>${performance.time}</td>
-                                    <td>${performance.artist}</td>
-                                    <td>${performance.stage}</td>
+                                    <td>Time</td>
+                                    <td>${performance.getPodium()}</td>
+                                    <td>${performance.getArtist()}</td>
                                     <td>
                                         <button type="button" class="btn btn-primary">Edit</button>
                                         <button type="button" class="btn btn-danger">Delete</button>
                                     </td>
                                 </tr>
-                            </c:foreach>
+                            </c:forEach>
                         </tbody>
                     </table>
                 </div>
             </div>
-
         </div>
 
     </body>
