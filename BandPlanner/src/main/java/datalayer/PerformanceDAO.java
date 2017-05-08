@@ -75,8 +75,8 @@ public class PerformanceDAO implements IPerformanceDAO {
             while (resultSet.next()) {
                 //Performance values
                 UUID performanceId = UUID.fromString(resultSet.getString("performance_id"));
-                Date startdate = resultSet.getDate("startdate");
-                Date enddate = resultSet.getDate("enddate");
+                Date startdate = resultSet.getDate("start_date");
+                Date enddate = resultSet.getDate("end_date");
 
                 p = new Performance(performanceId, startdate, enddate);
 
@@ -120,8 +120,8 @@ public class PerformanceDAO implements IPerformanceDAO {
             while (resultSet.next()) {
                 //Performance values
                 UUID performanceId = UUID.fromString(resultSet.getString("performance_id"));
-                Date startdate = resultSet.getDate("startdate");
-                Date enddate = resultSet.getDate("enddate");
+                Date startdate = resultSet.getDate("start_date");
+                Date enddate = resultSet.getDate("end_date");
 
                 Performance perf = new Performance(performanceId, startdate, enddate);
 
@@ -163,8 +163,8 @@ public class PerformanceDAO implements IPerformanceDAO {
             while (resultSet.next()) {
                 //Performance values
                 UUID performanceId = UUID.fromString(resultSet.getString("performance_id"));
-                Date startdate = resultSet.getDate("startdate");
-                Date enddate = resultSet.getDate("enddate");
+                Date startdate = resultSet.getDate("start_date");
+                Date enddate = resultSet.getDate("end_date");
 
                 Performance perf = new Performance(performanceId, startdate, enddate);
 
@@ -245,8 +245,8 @@ public class PerformanceDAO implements IPerformanceDAO {
             while (resultSet.next()) {
                 //Performance values
                 UUID performanceId = UUID.fromString(resultSet.getString("performance_id"));
-                Date startdate = resultSet.getDate("startdate");
-                Date enddate = resultSet.getDate("enddate");
+                Date startdate = resultSet.getDate("start_date");
+                Date enddate = resultSet.getDate("end_date");
 
                 p = new Performance(performanceId, startdate, enddate);
 
@@ -289,8 +289,8 @@ public class PerformanceDAO implements IPerformanceDAO {
             while (resultSet.next()) {
                 //Performance values
                 UUID performanceId = UUID.fromString(resultSet.getString("performance_id"));
-                Date startdate = resultSet.getDate("startdate");
-                Date enddate = resultSet.getDate("enddate");
+                Date startdate = resultSet.getDate("start_date");
+                Date enddate = resultSet.getDate("end_date");
 
                 p = new Performance(performanceId, startdate, enddate);
 
@@ -330,8 +330,8 @@ public class PerformanceDAO implements IPerformanceDAO {
             while (resultSet.next()) {
                 //Performance values
                 UUID performanceId = UUID.fromString(resultSet.getString("performance_id"));
-                Date startdate = resultSet.getDate("startdate");
-                Date enddate = resultSet.getDate("enddate");
+                Date startdate = resultSet.getDate("start_date");
+                Date enddate = resultSet.getDate("end_date");
 
                 Performance perf = new Performance(performanceId, startdate, enddate);
 

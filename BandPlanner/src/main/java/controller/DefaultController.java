@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 /**
  *
- * @author marco
+ * @author maxim
  */
 @Controller
 public class DefaultController {
@@ -22,7 +22,7 @@ public class DefaultController {
     ArtistDAO artistDAO = ArtistDAO.getInstance();
     PerformanceDAO performanceDAO = PerformanceDAO.getInstance();
 
-    @RequestMapping(value = "/", method = RequestMethod.GET)
+    @RequestMapping(value = "/test", method = RequestMethod.GET)
     public String index(ModelMap map) {
 
         map.put("getAllArtists", artistDAO.getAllArtists());
