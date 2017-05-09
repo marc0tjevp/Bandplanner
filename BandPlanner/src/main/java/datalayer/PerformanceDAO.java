@@ -75,8 +75,8 @@ public class PerformanceDAO implements IPerformanceDAO {
             while (resultSet.next()) {
                 //Performance values
                 UUID performanceId = UUID.fromString(resultSet.getString("performance_id"));
-                Date startdate = resultSet.getDate("start_time");
-                Date enddate = resultSet.getDate("end_time");
+                Date startdate = new Date(resultSet.getTimestamp("start_time").getTime());
+                Date enddate = new Date(resultSet.getTimestamp("end_time").getTime());
 
                 p = new Performance(performanceId, startdate, enddate);
 
@@ -120,8 +120,8 @@ public class PerformanceDAO implements IPerformanceDAO {
             while (resultSet.next()) {
                 //Performance values
                 UUID performanceId = UUID.fromString(resultSet.getString("performance_id"));
-                Date startdate = resultSet.getDate("start_time");
-                Date enddate = resultSet.getDate("end_time");
+                Date startdate = new Date(resultSet.getTimestamp("start_time").getTime());
+                Date enddate = new Date(resultSet.getTimestamp("end_time").getTime());
 
                 Performance perf = new Performance(performanceId, startdate, enddate);
 
@@ -163,8 +163,8 @@ public class PerformanceDAO implements IPerformanceDAO {
             while (resultSet.next()) {
                 //Performance values
                 UUID performanceId = UUID.fromString(resultSet.getString("performance_id"));
-                Date startdate = resultSet.getDate("start_time");
-                Date enddate = resultSet.getDate("end_time");
+                Date startdate = new Date(resultSet.getTimestamp("start_time").getTime());
+                Date enddate = new Date(resultSet.getTimestamp("end_time").getTime());
 
                 Performance perf = new Performance(performanceId, startdate, enddate);
 
@@ -245,8 +245,8 @@ public class PerformanceDAO implements IPerformanceDAO {
             while (resultSet.next()) {
                 //Performance values
                 UUID performanceId = UUID.fromString(resultSet.getString("performance_id"));
-                Date startdate = resultSet.getDate("start_time");
-                Date enddate = resultSet.getDate("end_time");
+                Date startdate = new Date(resultSet.getTimestamp("start_time").getTime());
+                Date enddate = new Date(resultSet.getTimestamp("end_time").getTime());
 
                 p = new Performance(performanceId, startdate, enddate);
 
@@ -275,7 +275,7 @@ public class PerformanceDAO implements IPerformanceDAO {
     //Get the next performance by getting the first one where the start time is larger than the current start time
     @Override
     public Performance getNextPerformance(String id) {
-        Performance p = null;
+        Performance p = null; 
         try {
             Connection conn = MysqlDAO.getInstance().connect();
             PreparedStatement statement = conn.prepareStatement(
@@ -289,8 +289,8 @@ public class PerformanceDAO implements IPerformanceDAO {
             while (resultSet.next()) {
                 //Performance values
                 UUID performanceId = UUID.fromString(resultSet.getString("performance_id"));
-                Date startdate = resultSet.getDate("start_time");
-                Date enddate = resultSet.getDate("end_time");
+                Date startdate = new Date(resultSet.getTimestamp("start_time").getTime());
+                Date enddate = new Date(resultSet.getTimestamp("end_time").getTime());
 
                 p = new Performance(performanceId, startdate, enddate);
 
@@ -330,8 +330,8 @@ public class PerformanceDAO implements IPerformanceDAO {
             while (resultSet.next()) {
                 //Performance values
                 UUID performanceId = UUID.fromString(resultSet.getString("performance_id"));
-                Date startdate = resultSet.getDate("start_time");
-                Date enddate = resultSet.getDate("end_time");
+                Date startdate = new Date(resultSet.getTimestamp("start_time").getTime());
+                Date enddate = new Date(resultSet.getTimestamp("end_time").getTime());
 
                 Performance perf = new Performance(performanceId, startdate, enddate);
 
