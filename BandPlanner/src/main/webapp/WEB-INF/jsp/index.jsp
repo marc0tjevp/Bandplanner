@@ -117,7 +117,7 @@
                         <tbody>
                             <c:forEach var="performance" items="${getAllPerformances}">
                                 <tr>
-                                    <td>${performance.getStarttime()} - ${performance.getEndtime()}</td>
+                                    <td>${performance.getStartTimestamp()} - ${performance.getEndTimestamp()}</td>
                                     <td>${performance.getPodium().getName()}</td>
                                     <td>${performance.getArtist().getName()}</td>
                                     <td>
