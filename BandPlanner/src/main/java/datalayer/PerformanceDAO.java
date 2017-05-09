@@ -112,7 +112,7 @@ public class PerformanceDAO implements IPerformanceDAO {
                     + "SELECT `performance_id`, `start_time`, `end_time`, `artist`.`a_name`, `podium`.`p_name` , `podium`.`podium_id` FROM `podium` "
                     + "LEFT JOIN `performance` ON `performance`.`podium`=`podium`.`podium_id` "
                     + "LEFT JOIN `artist` ON `performance`.`artist`=`artist`.`artist_id` "
-                    + "WHERE `podium`.`podium_id` = ?");
+                    + "WHERE `podium`.`podium_id` = ? ORDER BY `start_time` DESC;");
             statement.setString(1, p.getPodiumId().toString());
             ResultSet resultSet = statement.executeQuery();
 
@@ -156,7 +156,7 @@ public class PerformanceDAO implements IPerformanceDAO {
                     + "SELECT `performance_id`, `start_time`, `end_time`, `artist`.`a_name`, `podium`.`p_name` , `podium`.`podium_id` FROM `podium` "
                     + "LEFT JOIN `performance` ON `performance`.`podium`=`podium`.`podium_id` "
                     + "LEFT JOIN `artist` ON `performance`.`artist`=`artist`.`artist_id` "
-                    + "WHERE `start_time` = ?");
+                    + "WHERE `start_time` = ? ORDER BY `start_time` DESC;");
             statement.setTimestamp(1, new java.sql.Timestamp(d.getTime()));
             ResultSet resultSet = statement.executeQuery();
 
@@ -324,7 +324,7 @@ public class PerformanceDAO implements IPerformanceDAO {
             PreparedStatement statement = conn.prepareStatement(""
                     + "SELECT `performance_id`, `start_time`, `end_time`, `artist`.`a_name`, `podium`.`p_name` , `podium`.`podium_id` FROM `podium` "
                     + "LEFT JOIN `performance` ON `performance`.`podium`=`podium`.`podium_id` "
-                    + "LEFT JOIN `artist` ON `performance`.`artist`=`artist`.`artist_id`");
+                    + "LEFT JOIN `artist` ON `performance`.`artist`=`artist`.`artist_id` ORDER BY `start_time` DESC;");
             ResultSet resultSet = statement.executeQuery();
 
             while (resultSet.next()) {
