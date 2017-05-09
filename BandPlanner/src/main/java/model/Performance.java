@@ -1,6 +1,7 @@
 package model;
 
-import java.sql.Date;
+import java.sql.Timestamp;
+import java.util.Date;
 import java.util.UUID;
 
 /**
@@ -75,6 +76,16 @@ public class Performance {
 
     public void setPodium(Podium podium) {
         this.podium = podium;
+    }
+    
+    //Convert Java util date starttime to sql Timestamp
+    public Timestamp getStartTimestamp(){
+        return new Timestamp(starttime.getTime());
+    }
+    
+    //Convert Java util date enddtime to sql Timestamp
+    public Timestamp getEndTimestamp(){
+        return new Timestamp(endtime.getTime());
     }
 
 }

@@ -10,7 +10,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
-import java.sql.Date;
+import java.util.Date;
 import java.util.UUID;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -46,8 +46,8 @@ public class PerformanceDAO implements IPerformanceDAO {
                     + "INSERT INTO `performance` (`performance_id`,`start_time`,`end_time`,`artist`,`podium`) "
                     + "VALUES (?, ?, ?, ?, ?)");
             statement.setString(1, p.getPerformanceId().toString());
-            statement.setDate(2, p.getStarttime());
-            statement.setDate(3, p.getEndtime());
+            statement.setTimestamp(2, p.getStartTimestamp());
+            statement.setTimestamp(3, p.getEndTimestamp());
             statement.setString(4, p.getArtist().getArtistId().toString());
             statement.setString(5, p.getPodium().getPodiumId().toString());
             statement.executeUpdate();
@@ -157,7 +157,7 @@ public class PerformanceDAO implements IPerformanceDAO {
                     + "LEFT JOIN `performance` ON `performance`.`podium`=`podium`.`podium_id` "
                     + "LEFT JOIN `artist` ON `performance`.`artist`=`artist`.`artist_id` "
                     + "WHERE `start_time` = ?");
-            statement.setDate(1, d);
+            statement.setTimestamp(1, new java.sql.Timestamp(d.getTime()));
             ResultSet resultSet = statement.executeQuery();
 
             while (resultSet.next()) {
@@ -198,8 +198,8 @@ public class PerformanceDAO implements IPerformanceDAO {
                     "UPDATE `performance` SET `start_time` = ?, "
                     + "`end_time` = ?, `artist` = ? , `podium` = ? "
                     + "WHERE `performance_id` = ?");
-            statement.setDate(1, p.getStarttime());
-            statement.setDate(2, p.getEndtime());
+            statement.setTimestamp(1, p.getStartTimestamp());
+            statement.setTimestamp(2, p.getEndTimestamp());
             statement.setString(3, p.getArtist().getArtistId().toString());
             statement.setString(4, p.getPodium().getPodiumId().toString());
             statement.setString(5, p.getPerformanceId().toString());
