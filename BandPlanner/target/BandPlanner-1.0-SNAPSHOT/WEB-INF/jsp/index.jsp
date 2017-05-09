@@ -65,8 +65,8 @@
                                     <td>${artist.getName()}</td>
                                     <td>${artist.getDescription()}</td>
                                     <td>
-                                        <button type="button" class="btn btn-primary">Edit</button>
-                                        <button type="button" class="btn btn-danger">Delete</button>
+                                        <a type="button" class="btn btn-primary">Edit</a>
+                                        <a type="button" href="deleteArtist?id=${artist.getArtistId()}" class="btn btn-danger">Delete</a>
                                     </td>
                                 </tr>
                             </c:forEach>
@@ -92,8 +92,8 @@
                                     <td>${stage.getName()}</td>
                                     <td></td>
                                     <td>
-                                        <button type="button" class="btn btn-primary">Edit</button>
-                                        <button type="button" class="btn btn-danger">Delete</button>
+                                        <a type="button" class="btn btn-primary">Edit</a>
+                                        <a type="button" href="deletePodium?id=${stage.getPodiumId()}" class="btn btn-danger">Delete</a>
                                     </td>
                                 </tr>
                             </c:forEach>
@@ -121,8 +121,8 @@
                                     <td>${performance.getPodium().getName()}</td>
                                     <td>${performance.getArtist().getName()}</td>
                                     <td>
-                                        <button type="button" class="btn btn-primary">Edit</button>
-                                        <button type="button" class="btn btn-danger">Delete</button>
+                                        <a type="button" class="btn btn-primary">Edit</a>
+                                        <a type="button" href="deletePerformance?id=${performance.getPerformanceId()}" class="btn btn-danger">Delete</a>
                                     </td>
                                 </tr>
                             </c:forEach>

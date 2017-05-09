@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
  *
  * @author marco
  */
+
 @Controller
 public class DefaultController {
 
