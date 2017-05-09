@@ -35,7 +35,7 @@ public class PodiumDAO implements IPodiumDAO {
         try {
             conn = MysqlDAO.getInstance().connect();
             PreparedStatement statement = conn.prepareStatement(""
-                    + "INSERT INTO `podium` (`podium_id`,`name) "
+                    + "INSERT INTO `podium` (`podium_id`,`p_name) "
                     + "VALUES (?, ?)");
             statement.setString(1, p.getPodiumId().toString());
             statement.setString(2, p.getName());
@@ -53,13 +53,13 @@ public class PodiumDAO implements IPodiumDAO {
         Connection conn = null;
         try {
             conn = MysqlDAO.getInstance().connect();
-            PreparedStatement statement = conn.prepareStatement("SELECT `name`"
+            PreparedStatement statement = conn.prepareStatement("SELECT `p_name`"
                     + "FROM `podium` WHERE `podium_id` = ?");
             statement.setString(1, id.toString());
             ResultSet resultSet = statement.executeQuery();
 
             while (resultSet.next()) {
-                String name = resultSet.getString("name");
+                String name = resultSet.getString("p_name");
 
                 p = new Podium(name, id);
             }
@@ -78,7 +78,7 @@ public class PodiumDAO implements IPodiumDAO {
         try {
             conn = MysqlDAO.getInstance().connect();
             PreparedStatement statement = conn.prepareStatement("SELECT `podium_id` "
-                    + "FROM `podium` WHERE `name` = ?");
+                    + "FROM `podium` WHERE `p_name` = ?");
             statement.setString(1, n);
             ResultSet resultSet = statement.executeQuery();
 
@@ -101,12 +101,12 @@ public class PodiumDAO implements IPodiumDAO {
         Connection conn = null;
         try {
             conn = MysqlDAO.getInstance().connect();
-            PreparedStatement statement = conn.prepareStatement("SELECT `podium_id`, `name` FROM `podium`");
+            PreparedStatement statement = conn.prepareStatement("SELECT `podium_id`, `p_name` FROM `podium`");
             ResultSet resultSet = statement.executeQuery();
 
             while (resultSet.next()) {
                 UUID id = UUID.fromString(resultSet.getString("podium_id"));
-                String name = resultSet.getString("name");
+                String name = resultSet.getString("p_name");
 
                 Podium p = new Podium(name, id);
                 podia.add(p);
@@ -125,7 +125,7 @@ public class PodiumDAO implements IPodiumDAO {
         try {
             conn = MysqlDAO.getInstance().connect();
             PreparedStatement statement = conn.prepareStatement(
-                    "UPDATE `podium` SET `name` = ?, "
+                    "UPDATE `podium` SET `p_name` = ?, "
                     + " WHERE `podium_id` = ?");
             statement.setString(1, p.getName());
             statement.setString(2, p.getPodiumId().toString());
@@ -152,5 +152,4 @@ public class PodiumDAO implements IPodiumDAO {
             MysqlDAO.getInstance().closeConnection(conn);
         }
     }
-
 }

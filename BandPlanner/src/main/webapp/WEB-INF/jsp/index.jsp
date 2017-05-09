@@ -74,7 +74,34 @@
                     </table>
                 </div>
             </div>
-            
+
+            <div class="row">
+                <h4>Stages</h4>
+                <div class="table-responsive">
+                    <table class="table">
+                        <theader>
+                            <tr>
+                                <th>Name</th>
+                                <th>Description</th>
+                                <th>Actions
+                            </tr>
+                        </theader>
+                        <tbody>
+                            <c:forEach var="stage" items="${getAllPodia}">
+                                <tr>
+                                    <td>${stage.getName()}</td>
+                                    <td></td>
+                                    <td>
+                                        <button type="button" class="btn btn-primary">Edit</button>
+                                        <button type="button" class="btn btn-danger">Delete</button>
+                                    </td>
+                                </tr>
+                            </c:forEach>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
             <div class="row">
                 <h4>Performances</h4>
                 <div class="table-responsive">
@@ -90,9 +117,9 @@
                         <tbody>
                             <c:forEach var="performance" items="${getAllPerformances}">
                                 <tr>
-                                    <td>Time</td>
-                                    <td>${performance.getPodium()}</td>
-                                    <td>${performance.getArtist()}</td>
+                                    <td>${performance.getStarttime()} - ${performance.getEndtime()}</td>
+                                    <td>${performance.getPodium().getName()}</td>
+                                    <td>${performance.getArtist().getName()}</td>
                                     <td>
                                         <button type="button" class="btn btn-primary">Edit</button>
                                         <button type="button" class="btn btn-danger">Delete</button>
