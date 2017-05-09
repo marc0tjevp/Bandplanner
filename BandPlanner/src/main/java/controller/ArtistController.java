@@ -8,7 +8,9 @@ package controller;
 import datalayer.ArtistDAO;
 import java.util.UUID;
 import javax.servlet.http.HttpServletRequest;
+import model.Artist;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
@@ -17,11 +19,18 @@ import org.springframework.web.servlet.ModelAndView;
  *
  * @author maxim
  */
-
 @Controller
 public class ArtistController {
 
     ArtistDAO artistDAO = ArtistDAO.getInstance();
+
+    // Add Artist
+    @RequestMapping(value = "/addArtist", method = RequestMethod.POST)
+    public ModelAndView addArtist(ModelAndView model) {
+
+        //artistDAO.createArtist(a);
+        return model;
+    }
 
     // Delete Artist
     @RequestMapping(value = "/deleteArtist", method = RequestMethod.GET)

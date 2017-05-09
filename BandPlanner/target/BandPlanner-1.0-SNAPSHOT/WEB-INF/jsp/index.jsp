@@ -7,6 +7,7 @@
 <%@page contentType="text/html;charset=UTF-8" language="java" %>
 <%@page isELIgnored="false" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 
 <!DOCTYPE HTML>
 <html lang="en">
@@ -37,7 +38,7 @@
                         <a class="dropdown-toggle" data-toggle="dropdown" href="#">New
                             <span class="caret"></span></a>
                         <ul class="dropdown-menu">
-                            <li><a href="#">Artist</a></li>
+                            <li><a href="#" data-toggle="modal" data-target="#addArtistModal">Artist</a></li>
                             <li><a href="#">Stage</a></li>
                             <li><a href="#">Performance</a></li>
                         </ul>
@@ -129,6 +130,43 @@
                         </tbody>
                     </table>
                 </div>
+            </div>
+        </div>
+
+        <!-- Add Artist Modal -->
+        <div id="addArtistModal" class="modal fade" role="dialog">
+            <div class="modal-dialog">
+
+                <!-- Modal content-->
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                        <h4 class="modal-title">Add Artist</h4>
+                    </div>
+                    <div class="modal-body">
+
+                        <form:form method="POST" action="addArtist">
+                            <table>
+                                <tr>
+                                    <td><form:label path="name">Name</form:label></td>
+                                    <td><form:input path="name"/></td>
+                                </tr>
+                                <tr>
+                                    <td><form:label path="description">Description</form:label></td>
+                                    <td><form:input path="description"/></td>
+                                </tr>
+                                <tr>
+                                    <td><input type="submit" value="Submit"/></td>
+                                </tr>
+                            </table>
+                        </form:form>    
+
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                    </div>
+                </div>
+
             </div>
         </div>
 
