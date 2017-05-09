@@ -18,7 +18,7 @@ import org.springframework.web.servlet.ModelAndView;
  * @author maxim
  */
 
-@Controller
+@Controller ("PerformanceC")
 public class PerformanceController {
 
     PerformanceDAO performanceDAO = PerformanceDAO.getInstance();

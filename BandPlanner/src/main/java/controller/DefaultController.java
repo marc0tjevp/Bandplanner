@@ -10,10 +10,10 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 /**
  *
- * @author marco
+ * @author maxim
  */
 
-@Controller
+@Controller ("defaultC")
 public class DefaultController {
 
     ArtistDAO artistDAO = ArtistDAO.getInstance();

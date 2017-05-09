@@ -1,6 +1,11 @@
 
 import datalayer.ArtistDAO;
+import java.sql.Date;
+import java.time.LocalDateTime;
 import model.Artist;
+import model.Performance;
+import model.Podium;
+import org.springframework.format.datetime.joda.LocalDateTimeParser;
 
 /*
  * To change this license header, choose License Headers in Project Properties.
@@ -23,8 +28,12 @@ public class Starter {
         ArtistDAO.getInstance().createArtist(a);
         
         Artist b = ArtistDAO.getInstance().getArtistById(a.getArtistId());
-        
+        Podium po = new Podium(" henk");
         System.out.println(b.getName());
+        
+        LocalDateTime d;
+//        Date date = new Date()
+//        Performance p = new Performance(po, a, , );
         
     }
     

@@ -18,7 +18,7 @@ import org.springframework.web.servlet.ModelAndView;
  * @author maxim
  */
 
-@Controller
+@Controller ("PodiumC")
 public class PodiumController {
     
     PodiumDAO podiumDAO = PodiumDAO.getInstance();
