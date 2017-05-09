@@ -27,10 +27,12 @@ public class ArtistController {
 
     // Add Artist
     @RequestMapping(value = "/addArtist", method = RequestMethod.POST)
-    public ModelAndView addArtist(ModelAndView model) {
-
-        //artistDAO.createArtist(a);
-        return model;
+    public ModelAndView addArtist(HttpServletRequest request) {
+        String name = request.getParameter("name");
+        String description = request.getParameter("description");
+        Artist a = new Artist(name, description);
+        artistDAO.createArtist(a);
+        return new ModelAndView("redirect:/");
     }
 
     // Delete Artist
