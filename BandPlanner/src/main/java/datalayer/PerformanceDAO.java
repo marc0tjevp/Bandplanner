@@ -65,7 +65,7 @@ public class PerformanceDAO implements IPerformanceDAO {
         try {
             conn = MysqlDAO.getInstance().connect();
             PreparedStatement statement = conn.prepareStatement(""
-                    + "SELECT `performance_id`, `start_time`, `end_time`, `artist`.`a_name`, `podium`.`p_name` FROM `performance`"
+                    + "SELECT `performance_id`, `start_time`, `end_time`, `artist`.`a_name`, `podium`.`p_name` , `podium`.`podium_id` FROM `performance`"
                     + " LEFT JOIN `artist` ON `performance`.`artist`=`artist`.`artist_id`"
                     + " LEFT JOIN `podium` ON `performance`.`podium`=`podium`.`podium_id`"
                     + " WHERE `performance_id` = ?");
@@ -109,7 +109,7 @@ public class PerformanceDAO implements IPerformanceDAO {
         try {
             conn = MysqlDAO.getInstance().connect();
             PreparedStatement statement = conn.prepareStatement(""
-                    + "SELECT `performance_id`, `start_time`, `end_time`, `artist`.`a_name`, `podium`.`p_name` FROM `podium` "
+                    + "SELECT `performance_id`, `start_time`, `end_time`, `artist`.`a_name`, `podium`.`p_name` , `podium`.`podium_id` FROM `podium` "
                     + "LEFT JOIN `performance` ON `performance`.`podium`=`podium`.`podium_id` "
                     + "LEFT JOIN `artist` ON `performance`.`artist`=`artist`.`artist_id` "
                     + "WHERE `podium`.`podium_id` = ?");
@@ -153,7 +153,7 @@ public class PerformanceDAO implements IPerformanceDAO {
         try {
             conn = MysqlDAO.getInstance().connect();
             PreparedStatement statement = conn.prepareStatement(""
-                    + "SELECT `performance_id`, `start_time`, `end_time`, `artist`.`a_name`, `podium`.`p_name` FROM `podium` "
+                    + "SELECT `performance_id`, `start_time`, `end_time`, `artist`.`a_name`, `podium`.`p_name` , `podium`.`podium_id` FROM `podium` "
                     + "LEFT JOIN `performance` ON `performance`.`podium`=`podium`.`podium_id` "
                     + "LEFT JOIN `artist` ON `performance`.`artist`=`artist`.`artist_id` "
                     + "WHERE `start_time` = ?");
@@ -235,7 +235,7 @@ public class PerformanceDAO implements IPerformanceDAO {
         try {
             conn = MysqlDAO.getInstance().connect();
             PreparedStatement statement = conn.prepareStatement(
-                    "SELECT `performance_id`, `start_time`, `end_time`, `artist`.`a_name`, `podium`.`p_name` FROM `performance`"
+                    "SELECT `performance_id`, `start_time`, `end_time`, `artist`.`a_name`, `podium`.`p_name` , `podium`.`podium_id` FROM `performance`"
                     + " LEFT JOIN `artist` ON `performance`.`artist`=`artist`.`artist_id`"
                     + " LEFT JOIN `podium` ON `performance`.`podium`=`podium`.`podium_id`"
                     + " WHERE `end_time` < (SELECT `end_time` FROM `performance` WHERE `performance_id` = ?) ORDER BY `end_time` DESC LIMIT 1;");
@@ -279,7 +279,7 @@ public class PerformanceDAO implements IPerformanceDAO {
         try {
             Connection conn = MysqlDAO.getInstance().connect();
             PreparedStatement statement = conn.prepareStatement(
-                    "SELECT `performance_id`, `start_time`, `end_time`, `artist`.`a_name`, `artist`.`description`, `podium`.`p_name` FROM `performance` "
+                    "SELECT `performance_id`, `start_time`, `end_time`, `artist`.`a_name`, `artist`.`description`, `podium`.`p_name` , `podium`.`podium_id` FROM `performance` "
                     + "LEFT JOIN `artist` ON `performance`.`artist`=`artist`.`artist_id` "
                     + "LEFT JOIN `podium` ON `performance`.`podium`=`podium`.`podium_id` "
                     + "WHERE `start_time` > (SELECT `start_time` FROM `performance` WHERE `performance_id` = ?) ORDER BY `start_time` ASC LIMIT 1;");
@@ -322,7 +322,7 @@ public class PerformanceDAO implements IPerformanceDAO {
         try {
             conn = MysqlDAO.getInstance().connect();
             PreparedStatement statement = conn.prepareStatement(""
-                    + "SELECT `performance_id`, `start_time`, `end_time`, `artist`.`a_name`, `podium`.`p_name` FROM `podium` "
+                    + "SELECT `performance_id`, `start_time`, `end_time`, `artist`.`a_name`, `podium`.`p_name` , `podium`.`podium_id` FROM `podium` "
                     + "LEFT JOIN `performance` ON `performance`.`podium`=`podium`.`podium_id` "
                     + "LEFT JOIN `artist` ON `performance`.`artist`=`artist`.`artist_id`");
             ResultSet resultSet = statement.executeQuery();
