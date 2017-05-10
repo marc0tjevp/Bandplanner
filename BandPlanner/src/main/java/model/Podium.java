@@ -21,6 +21,9 @@ public class Podium {
         podiumId = UUID.randomUUID();
     }
 
+    public Podium() {
+    }
+
     public String getName() {
         return name;
     }

@@ -37,8 +37,8 @@
                         <a class="dropdown-toggle" data-toggle="dropdown" href="#">New
                             <span class="caret"></span></a>
                         <ul class="dropdown-menu">
-                            <li><a href="#" data-toggle="modal" data-target="#addArtistModal">Artist</a></li>
-                            <li><a href="#">Stage</a></li>
+                            <li><a href="addArtist">Artist</a></li>
+                            <li><a href="addPodium">Podium</a></li>
                             <li><a href="#">Performance</a></li>
                         </ul>
                     </li>
@@ -76,13 +76,12 @@
             </div>
 
             <div class="row">
-                <h4>Stages</h4>
+                <h4>Podia</h4>
                 <div class="table-responsive">
                     <table class="table">
                         <theader>
                             <tr>
                                 <th>Name</th>
-                                <th>Description</th>
                                 <th>Actions
                             </tr>
                         </theader>
@@ -90,7 +89,6 @@
                             <c:forEach var="stage" items="${getAllPodia}">
                                 <tr>
                                     <td>${stage.getName()}</td>
-                                    <td></td>
                                     <td>
                                         <a type="button" class="btn btn-primary">Edit</a>
                                         <a type="button" href="deletePodium?id=${stage.getPodiumId()}" class="btn btn-danger">Delete</a>
@@ -130,6 +128,8 @@
                     </table>
                 </div>
             </div>
+            
         </div>
+        
     </body>
 </html>

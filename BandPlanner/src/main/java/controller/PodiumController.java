@@ -29,7 +29,6 @@ public class PodiumController {
     public ModelAndView addPodium(HttpServletRequest request) {
         
         String name = request.getParameter("name");
-        //String description = request.getParameter("description");
         
         Podium p = new Podium(name);
         

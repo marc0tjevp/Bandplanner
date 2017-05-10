@@ -4,6 +4,7 @@ import datalayer.ArtistDAO;
 import datalayer.PerformanceDAO;
 import datalayer.PodiumDAO;
 import model.Artist;
+import model.Podium;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.ui.ModelMap;
@@ -34,7 +35,21 @@ public class DefaultController {
     @RequestMapping(value = "/addArtist", method = RequestMethod.GET)
     public String addArtist(Model model) {
         
+        Artist a = new Artist();
+        
+        model.addAttribute("artist", a);
+        
         return "addArtist";
+    }
+    
+    @RequestMapping(value = "/addPodium", method = RequestMethod.GET)
+    public String addPodium(Model model) {
+        
+        Podium p = new Podium();
+        
+        model.addAttribute("podium", p);
+        
+        return "addPodium";
     }
 
 }

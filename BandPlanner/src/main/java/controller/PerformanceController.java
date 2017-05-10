@@ -37,6 +37,7 @@ public class PerformanceController {
     // Add Performance
     @RequestMapping(value = "/addPerformance", method = RequestMethod.POST)
     public ModelAndView addPerformance(HttpServletRequest request) throws ParseException {
+        
         String artistParam = request.getParameter("artistID");
         String podiumParam = request.getParameter("podiumID");
         String startTimeParam = request.getParameter("starttime");
