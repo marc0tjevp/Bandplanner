@@ -39,7 +39,7 @@
                         <ul class="dropdown-menu">
                             <li><a href="addArtist">Artist</a></li>
                             <li><a href="addPodium">Podium</a></li>
-                            <li><a href="#">Performance</a></li>
+                            <li><a href="addPerformance">Performance</a></li>
                         </ul>
                     </li>
                 </ul>
