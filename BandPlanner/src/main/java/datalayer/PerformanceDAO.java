@@ -66,8 +66,8 @@ public class PerformanceDAO implements IPerformanceDAO {
             conn = MysqlDAO.getInstance().connect();
             PreparedStatement statement = conn.prepareStatement(""
                     + "SELECT `performance_id`, `start_time`, `end_time`, `artist`.`a_name`, `podium`.`p_name` , `podium`.`podium_id` FROM `performance`"
-                    + " LEFT JOIN `artist` ON `performance`.`artist`=`artist`.`artist_id`"
-                    + " LEFT JOIN `podium` ON `performance`.`podium`=`podium`.`podium_id`"
+                    + " INNER JOIN `artist` ON `performance`.`artist`=`artist`.`artist_id`"
+                    + " INNER JOIN `podium` ON `performance`.`podium`=`podium`.`podium_id`"
                     + " WHERE `performance_id` = ?");
             statement.setString(1, id.toString());
             ResultSet resultSet = statement.executeQuery();
@@ -110,8 +110,8 @@ public class PerformanceDAO implements IPerformanceDAO {
             conn = MysqlDAO.getInstance().connect();
             PreparedStatement statement = conn.prepareStatement(""
                     + "SELECT `performance_id`, `start_time`, `end_time`, `artist`.`a_name`, `podium`.`p_name` , `podium`.`podium_id` FROM `podium` "
-                    + "LEFT JOIN `performance` ON `performance`.`podium`=`podium`.`podium_id` "
-                    + "LEFT JOIN `artist` ON `performance`.`artist`=`artist`.`artist_id` "
+                    + "INNER JOIN `performance` ON `performance`.`podium`=`podium`.`podium_id` "
+                    + "INNER JOIN `artist` ON `performance`.`artist`=`artist`.`artist_id` "
                     + "WHERE `podium`.`podium_id` = ? ORDER BY `start_time` DESC;");
             statement.setString(1, p.getPodiumId().toString());
             ResultSet resultSet = statement.executeQuery();
@@ -154,8 +154,8 @@ public class PerformanceDAO implements IPerformanceDAO {
             conn = MysqlDAO.getInstance().connect();
             PreparedStatement statement = conn.prepareStatement(""
                     + "SELECT `performance_id`, `start_time`, `end_time`, `artist`.`a_name`, `podium`.`p_name` , `podium`.`podium_id` FROM `podium` "
-                    + "LEFT JOIN `performance` ON `performance`.`podium`=`podium`.`podium_id` "
-                    + "LEFT JOIN `artist` ON `performance`.`artist`=`artist`.`artist_id` "
+                    + "INNER JOIN `performance` ON `performance`.`podium`=`podium`.`podium_id` "
+                    + "INNER JOIN `artist` ON `performance`.`artist`=`artist`.`artist_id` "
                     + "WHERE `start_time` = ? ORDER BY `start_time` DESC;");
             statement.setTimestamp(1, new java.sql.Timestamp(d.getTime()));
             ResultSet resultSet = statement.executeQuery();
@@ -236,8 +236,8 @@ public class PerformanceDAO implements IPerformanceDAO {
             conn = MysqlDAO.getInstance().connect();
             PreparedStatement statement = conn.prepareStatement(
                     "SELECT `performance_id`, `start_time`, `end_time`, `artist`.`a_name`, `podium`.`p_name` , `podium`.`podium_id` FROM `performance`"
-                    + " LEFT JOIN `artist` ON `performance`.`artist`=`artist`.`artist_id`"
-                    + " LEFT JOIN `podium` ON `performance`.`podium`=`podium`.`podium_id`"
+                    + " INNER JOIN `artist` ON `performance`.`artist`=`artist`.`artist_id`"
+                    + " INNER JOIN `podium` ON `performance`.`podium`=`podium`.`podium_id`"
                     + " WHERE `end_time` < (SELECT `end_time` FROM `performance` WHERE `performance_id` = ?) ORDER BY `end_time` DESC LIMIT 1;");
             statement.setString(1, id);
             ResultSet resultSet = statement.executeQuery();
@@ -280,8 +280,8 @@ public class PerformanceDAO implements IPerformanceDAO {
             Connection conn = MysqlDAO.getInstance().connect();
             PreparedStatement statement = conn.prepareStatement(
                     "SELECT `performance_id`, `start_time`, `end_time`, `artist`.`a_name`, `artist`.`description`, `podium`.`p_name` , `podium`.`podium_id` FROM `performance` "
-                    + "LEFT JOIN `artist` ON `performance`.`artist`=`artist`.`artist_id` "
-                    + "LEFT JOIN `podium` ON `performance`.`podium`=`podium`.`podium_id` "
+                    + "INNER JOIN `artist` ON `performance`.`artist`=`artist`.`artist_id` "
+                    + "INNER JOIN `podium` ON `performance`.`podium`=`podium`.`podium_id` "
                     + "WHERE `start_time` > (SELECT `start_time` FROM `performance` WHERE `performance_id` = ?) ORDER BY `start_time` ASC LIMIT 1;");
             statement.setString(1, id);
             ResultSet resultSet = statement.executeQuery();
@@ -323,8 +323,8 @@ public class PerformanceDAO implements IPerformanceDAO {
             conn = MysqlDAO.getInstance().connect();
             PreparedStatement statement = conn.prepareStatement(""
                     + "SELECT `performance_id`, `start_time`, `end_time`, `artist`.`a_name`, `podium`.`p_name` , `podium`.`podium_id` FROM `podium` "
-                    + "LEFT JOIN `performance` ON `performance`.`podium`=`podium`.`podium_id` "
-                    + "LEFT JOIN `artist` ON `performance`.`artist`=`artist`.`artist_id` ORDER BY `start_time` DESC;");
+                    + "INNER JOIN `performance` ON `performance`.`podium`=`podium`.`podium_id` "
+                    + "INNER JOIN `artist` ON `performance`.`artist`=`artist`.`artist_id` ORDER BY `start_time` DESC;");
             ResultSet resultSet = statement.executeQuery();
 
             while (resultSet.next()) {
