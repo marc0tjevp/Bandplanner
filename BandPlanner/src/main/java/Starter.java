@@ -1,5 +1,6 @@
 
 import datalayer.ArtistDAO;
+import datalayer.PodiumDAO;
 import java.sql.Date;
 import java.time.LocalDateTime;
 import model.Artist;
@@ -30,7 +31,7 @@ public class Starter {
         Artist b = ArtistDAO.getInstance().getArtistById(a.getArtistId());
         Podium po = new Podium(" henk");
         System.out.println(b.getName());
-        
+        PodiumDAO.getInstance().createPodium(po);
         LocalDateTime d;
 //        Date date = new Date()
 //        Performance p = new Performance(po, a, , );

@@ -35,7 +35,7 @@ public class PodiumDAO implements IPodiumDAO {
         try {
             conn = MysqlDAO.getInstance().connect();
             PreparedStatement statement = conn.prepareStatement(""
-                    + "INSERT INTO `podium` (`podium_id`,`p_name) "
+                    + "INSERT INTO `podium` (`podium_id`,`p_name`) "
                     + "VALUES (?, ?)");
             statement.setString(1, p.getPodiumId().toString());
             statement.setString(2, p.getName());
