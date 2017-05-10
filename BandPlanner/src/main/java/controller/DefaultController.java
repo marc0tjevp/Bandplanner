@@ -4,6 +4,7 @@ import datalayer.ArtistDAO;
 import datalayer.PerformanceDAO;
 import datalayer.PodiumDAO;
 import model.Artist;
+import model.Performance;
 import model.Podium;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -50,6 +51,16 @@ public class DefaultController {
         model.addAttribute("podium", p);
         
         return "addPodium";
+    }
+    
+    @RequestMapping(value = "/addPerformance", method = RequestMethod.GET)
+    public String addPerformance(Model model) {
+        
+        Performance p = new Performance();
+        
+        model.addAttribute("performance", p);
+        
+        return "addPerformance";
     }
 
 }

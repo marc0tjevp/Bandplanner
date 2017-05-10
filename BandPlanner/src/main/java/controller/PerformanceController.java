@@ -38,16 +38,16 @@ public class PerformanceController {
     @RequestMapping(value = "/addPerformance", method = RequestMethod.POST)
     public ModelAndView addPerformance(HttpServletRequest request) throws ParseException {
         
-        String artistParam = request.getParameter("artistID");
-        String podiumParam = request.getParameter("podiumID");
+        String artistParam = request.getParameter("artist");
+        String podiumParam = request.getParameter("podium");
         String startTimeParam = request.getParameter("starttime");
         String endTimeParam = request.getParameter("endtime");
         
         Artist artist = artistDAO.getArtistById(UUID.fromString(artistParam));
         Podium podium = podiumDAO.getPodiumById(UUID.fromString(podiumParam));
         
-        DateFormat formatStartTime =  new SimpleDateFormat("");
-        DateFormat formatEndTime = new SimpleDateFormat("");
+        DateFormat formatStartTime =  new SimpleDateFormat("dd-MM-yyyy hh:mm");
+        DateFormat formatEndTime = new SimpleDateFormat("dd-MM-yyyy hh:mm");
         
         Date startTime = formatStartTime.parse(startTimeParam);
         Date endTime = formatEndTime.parse(endTimeParam);

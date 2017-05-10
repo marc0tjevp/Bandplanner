@@ -1,6 +1,8 @@
 package model;
 
 import java.sql.Timestamp;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.UUID;
 
@@ -36,6 +38,9 @@ public class Performance {
         this.starttime = starttime;
         this.endtime = endtime;
         performanceId = id;
+    }
+
+    public Performance() {
     }
 
     public UUID getPerformanceId() {
