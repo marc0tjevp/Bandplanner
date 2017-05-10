@@ -54,8 +54,11 @@ public class DefaultController {
     }
     
     @RequestMapping(value = "/addPerformance", method = RequestMethod.GET)
-    public String addPerformance(Model model) {
+    public String addPerformance(Model model, ModelMap map) {
         
+        map.put("getAllArtists", artistDAO.getAllArtists());
+        map.put("getAllPodia", podiumDAO.getAllPodia());
+
         Performance p = new Performance();
         
         model.addAttribute("performance", p);
