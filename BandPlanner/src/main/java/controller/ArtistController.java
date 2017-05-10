@@ -10,6 +10,7 @@ import java.util.UUID;
 import javax.servlet.http.HttpServletRequest;
 import model.Artist;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
@@ -45,6 +46,17 @@ public class ArtistController {
         artistDAO.deleteArtist(artistDAO.getArtistById(artistID));
 
         return new ModelAndView("redirect:/");
+    }
+    
+    // Get Artist Info
+    @RequestMapping(value = "/viewArtist", method = RequestMethod.GET)
+    public String viewArtist(HttpServletRequest request, ModelMap map) {
+
+        UUID artistID = UUID.fromString(request.getParameter("id"));
+
+        map.put("thisArtist", artistDAO.getArtistById(artistID));
+
+        return ("viewArtist");
     }
 
 }
