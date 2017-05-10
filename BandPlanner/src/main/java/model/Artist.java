@@ -12,19 +12,23 @@ public class Artist {
     private String description;
     private UUID artistId;
     
-    public Artist(String name, String description, UUID id){
+    public Artist() {
+        
+    }
+    
+    public Artist(String name, String description, UUID id) {
         this.name = name;
         this.description = description;
         artistId = id;
     }
 
-    public Artist(String name, String description){
+    public Artist(String name, String description) {
         this.name = name;
         this.description = description;
         artistId = UUID.randomUUID();
     }
     
-    public Artist(String name){
+    public Artist(String name) {
         this.name = name;
     }
 

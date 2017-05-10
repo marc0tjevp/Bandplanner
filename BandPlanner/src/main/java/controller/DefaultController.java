@@ -3,7 +3,9 @@ package controller;
 import datalayer.ArtistDAO;
 import datalayer.PerformanceDAO;
 import datalayer.PodiumDAO;
+import model.Artist;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -12,8 +14,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
  *
  * @author maxim
  */
-
-@Controller ("defaultC")
+@Controller("defaultC")
 public class DefaultController {
 
     ArtistDAO artistDAO = ArtistDAO.getInstance();
@@ -28,6 +29,12 @@ public class DefaultController {
         map.put("getAllPodia", podiumDAO.getAllPodia());
 
         return "index";
+    }
+
+    @RequestMapping(value = "/addArtist", method = RequestMethod.GET)
+    public String addArtist(Model model) {
+        
+        return "addArtist";
     }
 
 }
