@@ -1,7 +1,7 @@
 <%-- 
     Document   : index
     Created on : May 7, 2017, 9:46:27 AM
-    Author     : marco
+    Author     : maxim
 --%>
 
 <%@page contentType="text/html;charset=UTF-8" language="java" %>

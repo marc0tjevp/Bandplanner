@@ -1,7 +1,7 @@
 <%-- 
     Document   : viewArtist
     Created on : May 11, 2017, 12:00:51 AM
-    Author     : marco
+    Author     : maxim
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>

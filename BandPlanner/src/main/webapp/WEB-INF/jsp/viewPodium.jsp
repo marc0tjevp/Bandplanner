@@ -1,7 +1,7 @@
 <%-- 
     Document   : viewPodium
     Created on : May 11, 2017, 10:43:41 AM
-    Author     : marco
+    Author     : maxim
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>

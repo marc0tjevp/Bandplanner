@@ -1,7 +1,7 @@
 <%-- 
     Document   : editPerformance
     Created on : May 11, 2017, 11:42:22 AM
-    Author     : marco
+    Author     : maxim
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
@@ -57,7 +57,7 @@
                         <form:label path="artist">Artist</form:label>
                         <form:select class="form-control" path="artist" name="dropdown">
                             <c:forEach items="${getAllArtists}" var="artist">
-                                <option value="${artist.getArtistId()}" label="${artist.getName()}"/>
+                                <option value="${artist.getArtistId()}">${artist.getName()}</option>
                             </c:forEach>
                         </form:select>
                     </div>
@@ -66,7 +66,7 @@
                         <form:label path="podium">Podium</form:label>
                         <form:select class="form-control" path="podium" name="dropdown">
                             <c:forEach items="${getAllPodia}" var="podium">
-                                <option value="${podium.getPodiumId()}" label="${podium.getName()}"/>
+                                <option value="${podium.getPodiumId()}">${podium.getName()}</option>
                             </c:forEach>
                         </form:select>
                     </div>

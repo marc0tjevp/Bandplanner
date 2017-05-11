@@ -129,8 +129,8 @@ public class PodiumDAO implements IPodiumDAO {
         try {
             conn = MysqlDAO.getInstance().connect();
             PreparedStatement statement = conn.prepareStatement(
-                    "UPDATE `podium` SET `p_name` = ?, "
-                    + " WHERE `podium_id` = ?");
+                    "UPDATE `podium` SET `p_name` = ? "
+                    + " WHERE `podium_id` = ?;");
             statement.setString(1, p.getName());
             statement.setString(2, p.getPodiumId().toString());
             statement.executeUpdate();

@@ -1,7 +1,7 @@
 <%-- 
     Document   : editPodium
     Created on : May 11, 2017, 12:44:09 PM
-    Author     : marco
+    Author     : maxim
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
@@ -46,7 +46,7 @@
 
                 <form:form method="POST" action="updatePodium" modelAttribute="podium">
 
-                    <div class="form-group">
+                    <div class="form-group hidden">
                         <form:label path="podiumId">ID</form:label>
                         <form:input value="${thisPodium.getPodiumId()}" required="true" class="form-control" path="podiumId"/>
                     </div>

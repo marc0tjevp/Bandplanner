@@ -1,7 +1,7 @@
 <%-- 
     Document   : viewPerformance
     Created on : May 11, 2017, 9:41:56 AM
-    Author     : marco
+    Author     : maxim
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>

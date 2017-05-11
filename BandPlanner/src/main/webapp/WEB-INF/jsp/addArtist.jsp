@@ -1,7 +1,7 @@
 <%-- 
     Document   : addArtist
     Created on : May 9, 2017, 8:47:52 PM
-    Author     : marco
+    Author     : maxim
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
@@ -34,7 +34,7 @@
                     <a class="navbar-brand" href="index">BandPlanner</a>
                 </div>
                 <ul class="nav navbar-nav">
-                    <li class=""><a href="/">Home</a></li>
+                    <li class=""><a href="index">Home</a></li>
                 </ul>
             </div>
         </nav>
