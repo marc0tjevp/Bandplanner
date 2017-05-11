@@ -25,18 +25,18 @@ import model.Podium;
 public class PerformanceDAO implements IPerformanceDAO {
 
     private static PerformanceDAO instance;
-    
-    private PerformanceDAO(){
-        
+
+    private PerformanceDAO() {
+
     }
-    
-    public static PerformanceDAO getInstance(){
-        if(instance == null){
+
+    public static PerformanceDAO getInstance() {
+        if (instance == null) {
             instance = new PerformanceDAO();
         }
         return instance;
     }
-    
+
     @Override
     public void createPerformance(Performance p) {
         Connection conn = null;
@@ -264,20 +264,24 @@ public class PerformanceDAO implements IPerformanceDAO {
                 p.setArtist(a);
                 p.setPodium(podium);
             }
+            if (p != null) {
+                return p;
+            }
         } catch (SQLException ex) {
             Logger.getLogger(MysqlDAO.class.getName()).log(Level.SEVERE, null, ex);
         } finally {
             MysqlDAO.getInstance().closeConnection(conn);
         }
-        return p;
+        return getPerformanceById(UUID.fromString(id));
     }
 
     //Get the next performance by getting the first one where the start time is larger than the current start time
     @Override
     public Performance getNextPerformance(String id) {
-        Performance p = null; 
+        Performance p = null;
+        Connection conn = null;
         try {
-            Connection conn = MysqlDAO.getInstance().connect();
+            conn = MysqlDAO.getInstance().connect();
             PreparedStatement statement = conn.prepareStatement(
                     "SELECT `performance_id`, `start_time`, `end_time`, `artist`.`a_name`, `artist`.`description`, `podium`.`p_name` , `podium`.`podium_id` FROM `performance` "
                     + "INNER JOIN `artist` ON `performance`.`artist`=`artist`.`artist_id` "
@@ -308,11 +312,15 @@ public class PerformanceDAO implements IPerformanceDAO {
                 p.setArtist(a);
                 p.setPodium(podium);
             }
-            MysqlDAO.getInstance().closeConnection(conn);
+            if (p != null) {
+                return p;
+            }
         } catch (SQLException ex) {
             Logger.getLogger(MysqlDAO.class.getName()).log(Level.SEVERE, null, ex);
+        } finally {
+            MysqlDAO.getInstance().closeConnection(conn);
         }
-        return p;
+        return getPerformanceById(UUID.fromString(id));
     }
 
     @Override
