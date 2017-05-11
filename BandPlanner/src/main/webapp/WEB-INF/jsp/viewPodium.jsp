@@ -1,6 +1,6 @@
 <%-- 
-    Document   : viewPerformance
-    Created on : May 11, 2017, 9:41:56 AM
+    Document   : viewPodium
+    Created on : May 11, 2017, 10:43:41 AM
     Author     : marco
 --%>
 
@@ -11,7 +11,7 @@
 <html>
     <head>
 
-        <title>BandPlanner</title>
+        <title>BandPlanner - ${thisPodium.getName()}</title>
 
         <!-- Viewport -->
         <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -39,16 +39,9 @@
         <div class="container">
 
             <div class="row">
-                <h4>${thisPerformance.getArtist().getName()}</h4>
-                <p>${thisPerformance.getPodium().getName()}</p>
-                
-                <p>${thisPerformance.getStartTimestamp()} - ${thisPerformance.getEndTimestamp()}</p>
-
-                <a type="button" href="getPreviousPerformance?id=${thisPerformance.getPerformanceId()}" class="btn btn-primary">Previous</a>
-                <a type="button" href="getNextPerformance?id=${thisPerformance.getPerformanceId()}" class="btn btn-primary">Next</a>
-
-
+                <h4>${thisPodium.getName()}</h4>
             </div>
+            
         </div>
 
     </body>

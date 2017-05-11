@@ -10,6 +10,7 @@ import java.util.UUID;
 import javax.servlet.http.HttpServletRequest;
 import model.Podium;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
@@ -45,6 +46,17 @@ public class PodiumController {
         podiumDAO.deletePodium(podiumDAO.getPodiumById(podiumID));
 
         return new ModelAndView("redirect:/");
+    }
+    
+    // Get Podium Info
+    @RequestMapping(value = "/viewPodium", method = RequestMethod.GET)
+    public String viewArtist(HttpServletRequest request, ModelMap map) {
+
+        UUID podiumID = UUID.fromString(request.getParameter("id"));
+
+        map.put("thisPodium", podiumDAO.getPodiumById(podiumID));
+
+        return ("viewPodium");
     }
     
 }

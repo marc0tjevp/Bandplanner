@@ -6,7 +6,6 @@
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 
 <!DOCTYPE html>
 <html>
@@ -42,12 +41,8 @@
             <div class="row">
                 <h4>${thisArtist.getName()}</h4>
                 <p>${thisArtist.getDescription()}</p>
-
-                <a type="button" class="btn btn-primary">Previous</a>
-                <a type="button" href="" class="btn btn-primary">Next</a>
-
-
             </div>
+            
         </div>
 
     </body>

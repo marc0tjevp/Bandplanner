@@ -78,7 +78,7 @@
             <div class="row">
                 <h4>Podia</h4>
                 <div class="table-responsive">
-                    <table class="table">
+                    <table class="table table-hover">
                         <thead>
                             <tr>
                                 <th>Name</th>
@@ -87,7 +87,7 @@
                         </thead>
                         <tbody>
                             <c:forEach var="stage" items="${getAllPodia}">
-                                <tr>
+                                <tr class="clickable-row" data-href="viewPodium?id=${stage.getPodiumId()}">
                                     <td>${stage.getName()}</td>
                                     <td>
                                         <a type="button" class="btn btn-primary">Edit</a>
