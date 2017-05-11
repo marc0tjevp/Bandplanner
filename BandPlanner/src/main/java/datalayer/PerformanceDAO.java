@@ -103,6 +103,45 @@ public class PerformanceDAO implements IPerformanceDAO {
     }
 
     @Override
+    public ArrayList<Performance> getPerformancesByArtist(Artist a) {
+        ArrayList<Performance> performances = new ArrayList<>();
+        Connection conn = null;
+        try {
+            conn = MysqlDAO.getInstance().connect();
+            PreparedStatement statement = conn.prepareStatement(""
+                    + "SELECT `performance_id`, `start_time`, `end_time`, `podium`.`p_name` , `podium`.`podium_id` FROM `podium` "
+                    + "INNER JOIN `performance` ON `performance`.`podium`=`podium`.`podium_id` "
+                    + "INNER JOIN `artist` ON `performance`.`artist`=`artist`.`artist_id` "
+                    + "WHERE `artist`.`artist_id` = ? ORDER BY `start_time` DESC;");
+            statement.setString(1, a.getArtistId().toString());
+            ResultSet resultSet = statement.executeQuery();
+
+            while (resultSet.next()) {
+                //Performance values
+                UUID performanceId = UUID.fromString(resultSet.getString("performance_id"));
+                Date startdate = new Date(resultSet.getTimestamp("start_time").getTime());
+                Date enddate = new Date(resultSet.getTimestamp("end_time").getTime());
+
+                Performance perf = new Performance(performanceId, startdate, enddate);
+
+                //Podium values
+                UUID podiumId = UUID.fromString(resultSet.getString("podium_id"));
+                String podiumname = resultSet.getString("p_name");
+                Podium podium = new Podium(podiumname, podiumId);
+
+                perf.setArtist(a);
+                perf.setPodium(podium);
+                performances.add(perf);
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(MysqlDAO.class.getName()).log(Level.SEVERE, null, ex);
+        } finally {
+            MysqlDAO.getInstance().closeConnection(conn);
+        }
+        return performances;
+    }
+
+    @Override
     public ArrayList<Performance> getPerformancesByPodium(Podium p) {
         ArrayList<Performance> performances = new ArrayList<>();
         Connection conn = null;
@@ -116,7 +155,6 @@ public class PerformanceDAO implements IPerformanceDAO {
             statement.setString(1, p.getPodiumId().toString());
             ResultSet resultSet = statement.executeQuery();
 
-            //TODO
             while (resultSet.next()) {
                 //Performance values
                 UUID performanceId = UUID.fromString(resultSet.getString("performance_id"));
@@ -129,13 +167,8 @@ public class PerformanceDAO implements IPerformanceDAO {
                 String artistname = resultSet.getString("a_name");
                 Artist a = new Artist(artistname);
 
-                //Podium values
-                UUID podiumId = UUID.fromString(resultSet.getString("podium_id"));
-                String podiumname = resultSet.getString("p_name");
-                Podium podium = new Podium(podiumname, podiumId);
-
                 perf.setArtist(a);
-                perf.setPodium(podium);
+                perf.setPodium(p);
                 performances.add(perf);
             }
         } catch (SQLException ex) {
@@ -323,6 +356,7 @@ public class PerformanceDAO implements IPerformanceDAO {
         return getPerformanceById(UUID.fromString(id));
     }
 
+    //Get all performances ordered by start time
     @Override
     public ArrayList<Performance> getAllPerformances() {
         ArrayList<Performance> performances = new ArrayList<>();

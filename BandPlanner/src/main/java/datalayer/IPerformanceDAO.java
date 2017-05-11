@@ -3,6 +3,7 @@ package datalayer;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.UUID;
+import model.Artist;
 import model.Performance;
 import model.Podium;
 
@@ -29,5 +30,7 @@ public interface IPerformanceDAO {
     public Performance getPreviousPerformance(String id);
     
     public Performance getNextPerformance(String id);
+    
+    public ArrayList<Performance> getPerformancesByArtist(Artist a);
 
 }
