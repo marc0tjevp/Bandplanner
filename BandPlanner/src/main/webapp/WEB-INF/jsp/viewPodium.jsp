@@ -16,12 +16,15 @@
         <!-- Viewport -->
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
-        <!-- CDN's for now -->
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
-        <script src="https://code.jquery.com/jquery-3.2.1.min.js"
-                integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
-        crossorigin="anonymous"></script>
+        <!-- Stylesheets -->
+        <link rel="stylesheet" href="resources/bootstrap.css">
+        <link rel="stylesheet" href="resources/style.css">
+
+        <!-- JavaScript -->
+        <script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="crossorigin="anonymous"></script>
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+        <script src="resources/init.js"></script>
+
     </head>
     <body>
 
@@ -41,7 +44,35 @@
             <div class="row">
                 <h4>${thisPodium.getName()}</h4>
             </div>
-            
+
+            <div class="row">
+                <div class="well">
+                    <h4>Upcoming performances</h4>
+                    <div class="table-responsive">
+                        <table class="table table-hover">
+                            <thead>
+                                <tr>
+                                    <th>Time</th>
+                                    <th>Artist</th>
+                                    <th>&nbsp;</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <c:forEach var="performance" items="${performancesByPodium}">
+                                    <tr class="clickable-row" data-href="viewPerformance?id=${performance.getPerformanceId()}">
+                                        <td>${performance.getStartTimeFormat()} - ${performance.getEndTimeFormat()}</td>
+                                        <td>${performance.getArtist().getName()}</td>
+                                        <td>
+                                            <a type="button" class="btn btn-primary">View Performance</a>
+                                        </td>
+                                    </tr>
+                                </c:forEach>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+
         </div>
 
     </body>

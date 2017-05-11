@@ -16,12 +16,14 @@
         <!-- Viewport -->
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
-        <!-- CDN's for now -->
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
-        <script src="https://code.jquery.com/jquery-3.2.1.min.js"
-                integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
-        crossorigin="anonymous"></script>
+        <!-- Stylesheets -->
+        <link rel="stylesheet" href="resources/bootstrap.css">
+        <link rel="stylesheet" href="resources/style.css">
+
+        <!-- JavaScript -->
+        <script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="crossorigin="anonymous"></script>
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+
     </head>
     <body>
 
@@ -41,12 +43,11 @@
             <div class="row">
                 <h4>${thisPerformance.getArtist().getName()}</h4>
                 <p>${thisPerformance.getPodium().getName()}</p>
-                
-                <p>${thisPerformance.getStartTimestamp()} - ${thisPerformance.getEndTimestamp()}</p>
+
+                <p>${thisPerformance.getStartTimeFormat()} - ${thisPerformance.getEndTimeFormat()}</p>
 
                 <a type="button" href="getPreviousPerformance?id=${thisPerformance.getPerformanceId()}" class="btn btn-primary">Previous</a>
-                <a type="button" href="getNextPerformance?id=${thisPerformance.getPerformanceId()}" class="btn btn-primary">Next</a>
-
+                <a type="button" href="getNextPerformance?id=${thisPerformance.getPerformanceId()}" class="btn btn-primary ">Next</a>
 
             </div>
         </div>

@@ -18,7 +18,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
         <!-- Stylesheets -->
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+        <link rel="stylesheet" href="resources/bootstrap.css">
         <link rel="stylesheet" href="resources/style.css">
 
         <!-- JavaScript -->
@@ -36,7 +36,7 @@
                 </div>
                 <ul class="nav navbar-nav">
                     <li class="active"><a href="index">Home</a></li>
-                    <li class="dropdown">
+                    <li class="dropdown navbar-right">
                         <a class="dropdown-toggle" data-toggle="dropdown" href="#">New
                             <span class="caret"></span></a>
                         <ul class="dropdown-menu">
