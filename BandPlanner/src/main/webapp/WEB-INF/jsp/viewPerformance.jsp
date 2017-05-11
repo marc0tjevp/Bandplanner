@@ -20,6 +20,8 @@
         <link rel="stylesheet" href="resources/bootstrap.css">
         <link rel="stylesheet" href="resources/style.css">
 
+        <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+
         <!-- JavaScript -->
         <script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="crossorigin="anonymous"></script>
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
@@ -41,13 +43,24 @@
         <div class="container">
 
             <div class="row">
-                <h4>${thisPerformance.getArtist().getName()}</h4>
-                <p>${thisPerformance.getPodium().getName()}</p>
+                <h3>${thisPerformance.getArtist().getName()}</h3>
 
-                <p>${thisPerformance.getStartTimeFormat()} - ${thisPerformance.getEndTimeFormat()}</p>
+                <hr>
 
-                <a type="button" href="getPreviousPerformance?id=${thisPerformance.getPerformanceId()}" class="btn btn-primary">Previous</a>
-                <a type="button" href="getNextPerformance?id=${thisPerformance.getPerformanceId()}" class="btn btn-primary ">Next</a>
+                <p>
+                    <i class="fa fa-music" aria-hidden="true"></i>
+                    ${thisPerformance.getPodium().getName()}
+                </p>
+
+                <p>
+                    <i class="fa fa-calendar"></i>
+                    ${thisPerformance.getStartTimeFormat()} - ${thisPerformance.getEndTimeFormat()}
+                </p>
+
+                <div style="padding-top: 20px">
+                    <a type="button" href="getPreviousPerformance?id=${thisPerformance.getPerformanceId()}" class="btn btn-primary">Previous</a>
+                    <a type="button" href="getNextPerformance?id=${thisPerformance.getPerformanceId()}" class="btn btn-primary pull-right">Next</a>
+                </div>
 
             </div>
         </div>

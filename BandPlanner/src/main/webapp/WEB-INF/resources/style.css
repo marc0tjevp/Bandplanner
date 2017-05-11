@@ -15,3 +15,7 @@ tr.clickable-row {
 table tr td:last-child {
     text-align: right;
 }
+
+p i {
+    padding-right: 5px;
+}
