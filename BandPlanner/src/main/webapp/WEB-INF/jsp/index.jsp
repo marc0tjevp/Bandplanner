@@ -51,17 +51,17 @@
             <div class="row">
                 <h4>Artists</h4>
                 <div class="table-responsive">
-                    <table class="table">
-                        <theader>
+                    <table class="table table-hover">
+                        <thead>
                             <tr>
                                 <th>Name</th>
                                 <th>Description</th>
                                 <th>Actions</th>
                             </tr>
-                        </theader>
+                        </thead>
                         <tbody>
                             <c:forEach var="artist" items="${getAllArtists}">
-                                <tr>
+                                <tr class="clickable-row" data-href="viewArtist?id=${artist.getArtistId()}">
                                     <td>${artist.getName()}</td>
                                     <td>${artist.getDescription()}</td>
                                     <td>
@@ -79,12 +79,12 @@
                 <h4>Podia</h4>
                 <div class="table-responsive">
                     <table class="table">
-                        <theader>
+                        <thead>
                             <tr>
                                 <th>Name</th>
                                 <th>Actions
                             </tr>
-                        </theader>
+                        </thead>
                         <tbody>
                             <c:forEach var="stage" items="${getAllPodia}">
                                 <tr>
@@ -103,18 +103,18 @@
             <div class="row">
                 <h4>Performances</h4>
                 <div class="table-responsive">
-                    <table class="table">
-                        <theader>
+                    <table class="table table-hover">
+                        <thead>
                             <tr>
                                 <th>Time</th>
                                 <th>Artist</th>
                                 <th>Stage</th>
                                 <th>Actions</th>
                             </tr>
-                        </theader>
+                        </thead>
                         <tbody>
                             <c:forEach var="performance" items="${getAllPerformances}">
-                                <tr>
+                                <tr class="clickable-row" data-href="viewPerformance?id=${performance.getPerformanceId()}">
                                     <td>${performance.getStartTimestamp()} - ${performance.getEndTimestamp()}</td>
                                     <td>${performance.getPodium().getName()}</td>
                                     <td>${performance.getArtist().getName()}</td>
@@ -128,8 +128,19 @@
                     </table>
                 </div>
             </div>
-            
+
         </div>
-        
+
+        <script>
+            jQuery(document).ready(function ($) {
+                $(".clickable-row").click(function () {
+                    window.location = $(this).data("href");
+                });
+            });
+        </script>
+        <style>
+            tr.clickable-row { cursor: pointer; } 
+        </style>
+
     </body>
 </html>
