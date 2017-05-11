@@ -52,7 +52,7 @@
                 <h4>Artists</h4>
                 <div class="table-responsive">
                     <table class="table table-hover">
-                        <thead>
+                        <thead class="thead-inverse">
                             <tr>
                                 <th>Name</th>
                                 <th>Description</th>
@@ -65,7 +65,7 @@
                                     <td>${artist.getName()}</td>
                                     <td>${artist.getDescription()}</td>
                                     <td>
-                                        <a type="button" class="btn btn-primary">Edit</a>
+                                        <a type="button" href="editArtist?id=${artist.getArtistId()}" class="btn btn-primary">Edit</a>
                                         <a type="button" href="deleteArtist?id=${artist.getArtistId()}" class="btn btn-danger">Delete</a>
                                     </td>
                                 </tr>

@@ -3,6 +3,8 @@ package controller;
 import datalayer.ArtistDAO;
 import datalayer.PerformanceDAO;
 import datalayer.PodiumDAO;
+import java.util.UUID;
+import javax.servlet.http.HttpServletRequest;
 import model.Artist;
 import model.Performance;
 import model.Podium;
@@ -23,6 +25,7 @@ public class DefaultController {
     PerformanceDAO performanceDAO = PerformanceDAO.getInstance();
     PodiumDAO podiumDAO = PodiumDAO.getInstance();
 
+    // Index Page
     @RequestMapping(value = "/", method = RequestMethod.GET)
     public String index(ModelMap map) {
 
@@ -33,6 +36,7 @@ public class DefaultController {
         return "index";
     }
 
+    // Add Artist Page
     @RequestMapping(value = "/addArtist", method = RequestMethod.GET)
     public String addArtist(Model model) {
         
@@ -43,6 +47,7 @@ public class DefaultController {
         return "addArtist";
     }
     
+    // Add Podium Page
     @RequestMapping(value = "/addPodium", method = RequestMethod.GET)
     public String addPodium(Model model) {
         
@@ -53,6 +58,7 @@ public class DefaultController {
         return "addPodium";
     }
     
+    // Add Performance Page
     @RequestMapping(value = "/addPerformance", method = RequestMethod.GET)
     public String addPerformance(Model model, ModelMap map) {
         
@@ -65,5 +71,22 @@ public class DefaultController {
         
         return "addPerformance";
     }
+    
+    // Update Artist Page
+    @RequestMapping(value = "/editArtist", method = RequestMethod.GET)
+    public String getArtist(HttpServletRequest request, ModelMap map, Model model) {
+        
+        Artist a = new Artist();
+        
+        model.addAttribute("artist", a);
+
+        UUID artistID = UUID.fromString(request.getParameter("id"));
+
+        map.put("thisArtist", artistDAO.getArtistById(artistID));
+
+        return ("editArtist");
+    }
+    
+    
 
 }

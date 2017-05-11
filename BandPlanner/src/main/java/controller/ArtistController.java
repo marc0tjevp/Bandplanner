@@ -37,8 +37,27 @@ public class ArtistController {
 
         return new ModelAndView("redirect:/");
     }
+    
+    // Update Artist
+    @RequestMapping(value = "/updateArtist", method = RequestMethod.POST)
+    public ModelAndView updateArtist(HttpServletRequest request) {
+        
+        String id = request.getParameter("artistId");
+        String name = request.getParameter("name");
+        String description = request.getParameter("description");
 
-    // Delete Artist
+        Artist a = artistDAO.getArtistById(UUID.fromString(id));
+        
+        a.setName(name);
+        a.setDescription(description);
+        
+        artistDAO.updateArtist(a);
+        
+        return new ModelAndView("redirect:/");
+    }
+    
+    
+    // Delete Artist 
     @RequestMapping(value = "/deleteArtist", method = RequestMethod.GET)
     public ModelAndView deleteArtist(HttpServletRequest request) {
 
