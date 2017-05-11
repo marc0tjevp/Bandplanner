@@ -16,18 +16,21 @@ public class Artist {
         
     }
     
+    //Constructor with ID in param to set
     public Artist(String name, String description, UUID id) {
         this.name = name;
         this.description = description;
         artistId = id;
     }
 
+    //Constructor with random generated ID
     public Artist(String name, String description) {
         this.name = name;
         this.description = description;
         artistId = UUID.randomUUID();
     }
     
+    //Constructor with only name for view purposes
     public Artist(String name) {
         this.name = name;
     }

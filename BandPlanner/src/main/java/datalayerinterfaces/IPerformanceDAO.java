@@ -1,7 +1,6 @@
-package datalayer;
+package datalayerinterfaces;
 
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.UUID;
 import model.Artist;
 import model.Performance;
@@ -18,8 +17,6 @@ public interface IPerformanceDAO {
     public Performance getPerformanceById(UUID id);
 
     public ArrayList<Performance> getPerformancesByPodium(Podium p);
-
-    public ArrayList<Performance> getPerformancesByDay(Date d);
     
     public ArrayList<Performance> getAllPerformances();
 

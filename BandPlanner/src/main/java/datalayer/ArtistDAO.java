@@ -1,5 +1,6 @@
 package datalayer;
 
+import datalayerinterfaces.IArtistDAO;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -29,6 +30,7 @@ public class ArtistDAO implements IArtistDAO {
         return instance;
     }
 
+    //Create new artist
     @Override
     public void createArtist(Artist a) {
         Connection conn = null;
@@ -48,6 +50,7 @@ public class ArtistDAO implements IArtistDAO {
         }
     }
 
+    //Get artist by ID
     @Override
     public Artist getArtistById(UUID id) {
         Artist a = null;
@@ -73,6 +76,7 @@ public class ArtistDAO implements IArtistDAO {
         return a;
     }
 
+    //Get artist by name
     @Override
     public Artist getArtistByName(String n) {
         Artist a = null;
@@ -98,6 +102,7 @@ public class ArtistDAO implements IArtistDAO {
         return a;
     }
 
+    //Get all artists
     @Override
     public ArrayList<Artist> getAllArtists() {
         ArrayList<Artist> artists = new ArrayList<>();
@@ -123,6 +128,7 @@ public class ArtistDAO implements IArtistDAO {
         return artists;
     }
 
+    //Update artist
     @Override
     public void updateArtist(Artist a) {
         Connection conn = null;
@@ -142,6 +148,7 @@ public class ArtistDAO implements IArtistDAO {
         }
     }
 
+    //Delete artist
     @Override
     public void deleteArtist(Artist a) {
         Connection conn = null;

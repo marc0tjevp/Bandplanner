@@ -1,5 +1,6 @@
 package datalayer;
 
+import datalayerinterfaces.IPodiumDAO;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -29,6 +30,7 @@ public class PodiumDAO implements IPodiumDAO {
         return instance;
     }
 
+    //Create new podium
     @Override
     public void createPodium(Podium p) {
         Connection conn = null;
@@ -47,6 +49,7 @@ public class PodiumDAO implements IPodiumDAO {
         }
     }
 
+    //Get podium by ID
     @Override
     public Podium getPodiumById(UUID id) {
         Podium p = null;
@@ -60,7 +63,6 @@ public class PodiumDAO implements IPodiumDAO {
 
             while (resultSet.next()) {
                 String name = resultSet.getString("p_name");
-
                 p = new Podium(name, id);
             }
         } catch (SQLException ex) {
@@ -71,6 +73,7 @@ public class PodiumDAO implements IPodiumDAO {
         return p;
     }
 
+    //Get podium by name
     @Override
     public Podium getPodiumByName(String n) {
         Podium p = null;
@@ -84,7 +87,6 @@ public class PodiumDAO implements IPodiumDAO {
 
             while (resultSet.next()) {
                 UUID id = UUID.fromString(resultSet.getString("podium_id"));
-
                 p = new Podium(n, id);
             }
         } catch (SQLException ex) {
@@ -95,6 +97,7 @@ public class PodiumDAO implements IPodiumDAO {
         return p;
     }
 
+    //Get all podia/stages
     @Override
     public ArrayList<Podium> getAllPodia() {
         ArrayList<Podium> podia = new ArrayList<>();
@@ -119,6 +122,7 @@ public class PodiumDAO implements IPodiumDAO {
         return podia;
     }
 
+    //Update Podium
     @Override
     public void updatePodium(Podium p) {
         Connection conn = null;
@@ -137,6 +141,7 @@ public class PodiumDAO implements IPodiumDAO {
         }
     }
 
+    //Delete Podium
     @Override
     public void deletePodium(Podium p) {
         Connection conn = null;

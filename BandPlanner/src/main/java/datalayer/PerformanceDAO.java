@@ -1,10 +1,6 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package datalayer;
 
+import datalayerinterfaces.IPerformanceDAO;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -37,6 +33,7 @@ public class PerformanceDAO implements IPerformanceDAO {
         return instance;
     }
 
+    //Create new performance
     @Override
     public void createPerformance(Performance p) {
         Connection conn = null;
@@ -58,6 +55,7 @@ public class PerformanceDAO implements IPerformanceDAO {
         }
     }
 
+    //Get performance by ID
     @Override
     public Performance getPerformanceById(UUID id) {
         Performance p = null;
@@ -102,6 +100,7 @@ public class PerformanceDAO implements IPerformanceDAO {
         return p;
     }
 
+    //Get all performances of artist
     @Override
     public ArrayList<Performance> getPerformancesByArtist(Artist a) {
         ArrayList<Performance> performances = new ArrayList<>();
@@ -141,6 +140,7 @@ public class PerformanceDAO implements IPerformanceDAO {
         return performances;
     }
 
+    //Get all performances of a podium
     @Override
     public ArrayList<Performance> getPerformancesByPodium(Podium p) {
         ArrayList<Performance> performances = new ArrayList<>();
@@ -179,49 +179,7 @@ public class PerformanceDAO implements IPerformanceDAO {
         return performances;
     }
 
-    @Override
-    public ArrayList<Performance> getPerformancesByDay(Date d) {
-        ArrayList<Performance> performances = new ArrayList<>();
-        Connection conn = null;
-        try {
-            conn = MysqlDAO.getInstance().connect();
-            PreparedStatement statement = conn.prepareStatement(""
-                    + "SELECT `performance_id`, `start_time`, `end_time`, `artist`.`a_name`, `podium`.`p_name` , `podium`.`podium_id` FROM `podium` "
-                    + "INNER JOIN `performance` ON `performance`.`podium`=`podium`.`podium_id` "
-                    + "INNER JOIN `artist` ON `performance`.`artist`=`artist`.`artist_id` "
-                    + "WHERE `start_time` = ? ORDER BY `start_time` DESC;");
-            statement.setTimestamp(1, new java.sql.Timestamp(d.getTime()));
-            ResultSet resultSet = statement.executeQuery();
-
-            while (resultSet.next()) {
-                //Performance values
-                UUID performanceId = UUID.fromString(resultSet.getString("performance_id"));
-                Date startdate = new Date(resultSet.getTimestamp("start_time").getTime());
-                Date enddate = new Date(resultSet.getTimestamp("end_time").getTime());
-
-                Performance perf = new Performance(performanceId, startdate, enddate);
-
-                //Artist values
-                String artistname = resultSet.getString("a_name");
-                Artist a = new Artist(artistname);
-
-                //Podium values
-                UUID podiumId = UUID.fromString(resultSet.getString("podium_id"));
-                String podiumname = resultSet.getString("p_name");
-                Podium podium = new Podium(podiumname, podiumId);
-
-                perf.setArtist(a);
-                perf.setPodium(podium);
-                performances.add(perf);
-            }
-        } catch (SQLException ex) {
-            Logger.getLogger(MysqlDAO.class.getName()).log(Level.SEVERE, null, ex);
-        } finally {
-            MysqlDAO.getInstance().closeConnection(conn);
-        }
-        return performances;
-    }
-
+    //Update performance
     @Override
     public void updatePerformance(Performance p) {
         Connection conn = null;
@@ -244,6 +202,7 @@ public class PerformanceDAO implements IPerformanceDAO {
         }
     }
 
+    //Delete performance
     @Override
     public void deletePerformance(Performance p) {
         Connection conn = null;

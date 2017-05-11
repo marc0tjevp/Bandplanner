@@ -1,7 +1,6 @@
 package model;
 
 import java.sql.Timestamp;
-import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.UUID;
@@ -18,6 +17,7 @@ public class Performance {
     private Artist artist;
     private Podium podium;
 
+    //Constructor with ID generator
     public Performance(Podium podium, Artist artist, Date starttime, Date endtime) {
         this.podium = podium;
         this.artist = artist;
@@ -26,6 +26,7 @@ public class Performance {
         performanceId = UUID.randomUUID();
     }
 
+    //Constructor with ID in param to set
     public Performance(UUID id, Podium podium, Artist artist, Date starttime, Date endtime) {
         this.podium = podium;
         this.artist = artist;
@@ -34,6 +35,7 @@ public class Performance {
         performanceId = id;
     }
 
+    //Constructor with ID for simple view purposes
     public Performance(UUID id, Date starttime, Date endtime) {
         this.starttime = starttime;
         this.endtime = endtime;
@@ -93,14 +95,14 @@ public class Performance {
         return new Timestamp(endtime.getTime());
     }
 
+    //Get String format of the start time
     public String getStartTimeFormat() {
-
         String s = new SimpleDateFormat("dd-MM-yyyy HH:mm").format(starttime.getTime());
         return s;
     }
 
+    //Get String format of the end time
     public String getEndTimeFormat() {
-
         String s = new SimpleDateFormat("dd-MM-yyyy HH:mm").format(endtime.getTime());
         return s;
 

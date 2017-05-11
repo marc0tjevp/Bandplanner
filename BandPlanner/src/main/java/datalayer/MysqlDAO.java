@@ -39,7 +39,7 @@ public class MysqlDAO {
         return null;
     }
     
-    //Close connection if exists
+    //Close connection if connection exists
     public void closeConnection(Connection conn){
         if(conn != null){
             try {
