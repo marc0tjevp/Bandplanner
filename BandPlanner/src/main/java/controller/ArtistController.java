@@ -56,7 +56,6 @@ public class ArtistController {
         return new ModelAndView("redirect:/");
     }
     
-    
     // Delete Artist 
     @RequestMapping(value = "/deleteArtist", method = RequestMethod.GET)
     public ModelAndView deleteArtist(HttpServletRequest request) {

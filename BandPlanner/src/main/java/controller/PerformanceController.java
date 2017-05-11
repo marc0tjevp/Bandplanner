@@ -58,6 +58,37 @@ public class PerformanceController {
 
         return new ModelAndView("redirect:/");
     }
+    
+    // Update Performance
+    @RequestMapping(value = "/updatePerformance", method = RequestMethod.POST)
+    public ModelAndView updatePerformance(HttpServletRequest request) throws ParseException {
+        
+        String id = request.getParameter("performanceId");
+        String artistParam = request.getParameter("artist");
+        String podiumParam = request.getParameter("podium");
+        String startTimeParam = request.getParameter("starttime");
+        String endTimeParam = request.getParameter("endtime");
+        
+        Artist artist = artistDAO.getArtistById(UUID.fromString(artistParam));
+        Podium podium = podiumDAO.getPodiumById(UUID.fromString(podiumParam));
+
+        DateFormat formatStartTime = new SimpleDateFormat("dd-MM-yyyy hh:mm");
+        DateFormat formatEndTime = new SimpleDateFormat("dd-MM-yyyy hh:mm");
+        
+        Date starttime = formatStartTime.parse(startTimeParam);
+        Date endtime = formatEndTime.parse(endTimeParam);
+        
+        Performance p = performanceDAO.getPerformanceById(UUID.fromString(id));
+        
+        p.setArtist(artist);
+        p.setPodium(podium);
+        p.setStarttime(starttime);
+        p.setEndtime(endtime);
+        
+        performanceDAO.updatePerformance(p);
+        
+        return new ModelAndView("redirect:/");
+    }
 
     // Delete Performance
     @RequestMapping(value = "/deletePerformance", method = RequestMethod.GET)

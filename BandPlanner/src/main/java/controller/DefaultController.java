@@ -35,6 +35,13 @@ public class DefaultController {
 
         return "index";
     }
+    
+    // Index Redirect
+    @RequestMapping(value = "/index", method = RequestMethod.GET)
+    public String redirectIndex() {
+        
+        return "redirect:/";
+    }
 
     // Add Artist Page
     @RequestMapping(value = "/addArtist", method = RequestMethod.GET)
@@ -87,6 +94,37 @@ public class DefaultController {
         return ("editArtist");
     }
     
+    // Update Podium Page
+    @RequestMapping(value = "/editPodium", method = RequestMethod.GET)
+    public String getPodium(HttpServletRequest request, ModelMap map, Model model) {
+        
+        Podium p = new Podium();
+        
+        model.addAttribute("podium", p);
+
+        UUID podiumID = UUID.fromString(request.getParameter("id"));
+
+        map.put("thisPodium", podiumDAO.getPodiumById(podiumID));
+
+        return ("editPodium");
+    }
     
+    // Update Performance Page
+    @RequestMapping(value = "/editPerformance", method = RequestMethod.GET)
+    public String getPerformance(HttpServletRequest request, ModelMap map, Model model) {
+        
+        Performance p = new Performance();
+        
+        model.addAttribute("performance", p);
+        
+        map.put("getAllArtists", artistDAO.getAllArtists());
+        map.put("getAllPodia", podiumDAO.getAllPodia());
+
+        UUID performanceID = UUID.fromString(request.getParameter("id"));
+
+        map.put("thisPerformance", performanceDAO.getPerformanceById(performanceID));
+
+        return ("editPerformance");
+    }
 
 }

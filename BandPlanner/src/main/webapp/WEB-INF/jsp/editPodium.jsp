@@ -1,6 +1,6 @@
 <%-- 
-    Document   : addPodium
-    Created on : May 10, 2017, 9:22:38 PM
+    Document   : editPodium
+    Created on : May 11, 2017, 12:44:09 PM
     Author     : marco
 --%>
 
@@ -12,7 +12,7 @@
 <html>
     <head>
 
-        <title>BandPlanner - Add Podium</title>
+        <title>BandPlanner - Edit Podium</title>
 
         <!-- Viewport -->
         <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -40,16 +40,22 @@
         <div class="container">
 
             <div class="row">
-                <h4>Add Podium</h4>
+                <h4>Edit Podium</h4>
 
-                <form:form method="POST" action="addPodium" modelAttribute="podium">
+                <form:form method="POST" action="updatePodium" modelAttribute="podium">
+
+                    <div class="form-group">
+                        <form:label path="podiumId">ID</form:label>
+                        <form:input value="${thisPodium.getPodiumId()}" required="true" class="form-control" path="podiumId"/>
+                    </div>
+
                     <div class="form-group">
                         <form:label path="name">Name</form:label>
-                        <form:input required="true" class="form-control" path="name"/>
+                        <form:input value="${thisPodium.getName()}" required="true" class="form-control" path="name"/>
                     </div>
-                    
+
                     <button type="submit" class="btn btn-default">Submit</button>
-                    
+
                 </form:form>
 
             </div>

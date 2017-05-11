@@ -29,7 +29,7 @@
         <nav class="navbar navbar-inverse">
             <div class="container-fluid">
                 <div class="navbar-header">
-                    <a class="navbar-brand" href="#">BandPlanner</a>
+                    <a class="navbar-brand" href="index">BandPlanner</a>
                 </div>
                 <ul class="nav navbar-nav">
                     <li class=""><a href="/">Home</a></li>

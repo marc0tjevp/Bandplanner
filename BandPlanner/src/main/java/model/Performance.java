@@ -82,15 +82,28 @@ public class Performance {
     public void setPodium(Podium podium) {
         this.podium = podium;
     }
-    
+
     //Convert Java util date starttime to sql Timestamp
-    public Timestamp getStartTimestamp(){
+    public Timestamp getStartTimestamp() {
         return new Timestamp(starttime.getTime());
     }
-    
+
     //Convert Java util date enddtime to sql Timestamp
-    public Timestamp getEndTimestamp(){
+    public Timestamp getEndTimestamp() {
         return new Timestamp(endtime.getTime());
+    }
+
+    public String getStartTimeFormat() {
+
+        String s = new SimpleDateFormat("dd-MM-yyyy HH:mm").format(starttime.getTime());
+        return s;
+    }
+
+    public String getEndTimeFormat() {
+
+        String s = new SimpleDateFormat("dd-MM-yyyy HH:mm").format(endtime.getTime());
+        return s;
+
     }
 
 }

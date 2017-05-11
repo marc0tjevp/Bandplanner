@@ -37,6 +37,22 @@ public class PodiumController {
         
         return new ModelAndView("redirect:/");
     }
+    
+    // Update Podium
+    @RequestMapping(value = "/updatePodium", method = RequestMethod.POST)
+    public ModelAndView updatePodium(HttpServletRequest request) {
+        
+        String id = request.getParameter("podiumId");
+        String name = request.getParameter("name");
+
+        Podium p = podiumDAO.getPodiumById(UUID.fromString(id));
+        
+        p.setName(name);
+        
+        podiumDAO.updatePodium(p);
+        
+        return new ModelAndView("redirect:/");
+    }
 
     // Delete Podium
     @RequestMapping(value = "/deletePodium", method = RequestMethod.GET)

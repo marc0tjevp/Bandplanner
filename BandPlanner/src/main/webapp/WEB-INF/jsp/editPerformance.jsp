@@ -1,6 +1,6 @@
 <%-- 
-    Document   : addPerformance
-    Created on : May 10, 2017, 9:56:06 PM
+    Document   : editPerformance
+    Created on : May 11, 2017, 11:42:22 AM
     Author     : marco
 --%>
 
@@ -12,7 +12,7 @@
 <html>
     <head>
 
-        <title>BandPlanner - Add Performance</title>
+        <title>BandPlanner - Edit Performance</title>
 
         <!-- Viewport -->
         <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -44,13 +44,18 @@
         <div class="container">
 
             <div class="row">
-                <h4>Add Performance</h4>
+                <h4>Edit Performance</h4>
 
-                <form:form method="POST" action="addPerformance" modelAttribute="performance">
+                <form:form method="POST" action="updatePerformance" modelAttribute="performance">
+
+                    <div class="form-group hidden">
+                        <form:label path="PerformanceId">ID</form:label>
+                        <form:input value="${thisPerformance.getPerformanceId().toString()}" required="true" class="form-control" path="performanceId"/>
+                    </div>
 
                     <div class="form-group">
+                        <form:label path="artist">Artist</form:label>
                         <form:select class="form-control" path="artist" name="dropdown">
-                            <option value="">Select Artist</option>
                             <c:forEach items="${getAllArtists}" var="artist">
                                 <option value="${artist.getArtistId()}" label="${artist.getName()}"/>
                             </c:forEach>
@@ -58,8 +63,8 @@
                     </div>
 
                     <div class="form-group">
+                        <form:label path="podium">Podium</form:label>
                         <form:select class="form-control" path="podium" name="dropdown">
-                            <option value="">Select Podium</option>
                             <c:forEach items="${getAllPodia}" var="podium">
                                 <option value="${podium.getPodiumId()}" label="${podium.getName()}"/>
                             </c:forEach>
@@ -68,12 +73,12 @@
 
                     <div class="form-group">
                         <form:label path="starttime">Start Time</form:label>
-                        <form:input type="text" required="true" class="datetimepicker form-control" path="starttime"/>
+                        <form:input value="${thisPerformance.getStartTimeFormat()}" type="text" required="true" class="datetimepicker form-control" path="starttime"/>
                     </div>
 
                     <div class="form-group">
                         <form:label path="endtime">End Time</form:label>
-                        <form:input type="text" required="true" class="datetimepicker form-control" path="endtime"/>
+                        <form:input value="${thisPerformance.getEndTimeFormat()}" type="text" required="true" class="datetimepicker form-control" path="endtime"/>
                     </div>
 
                     <button type="submit" class="btn btn-default">Submit</button>
@@ -85,10 +90,9 @@
 
         <script>
             jQuery('.datetimepicker').datetimepicker({
-                format:'d-m-Y H:i'
+                format: 'd-m-Y H:i'
             });
         </script>
 
     </body>
 </html>
-
